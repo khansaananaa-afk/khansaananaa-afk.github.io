@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.khansaananaa_afk.twa",
+        "sha256_cert_fingerprints": ["85:F3:74:DC:A9:21:0B:2D:BB:C8:0C:64:0E:D0:7E:92:0D:37:3A:54:3A:DE:D0:9B:DF:33:E9:1B:DC:28:3C:1F"]
+      }
+    }]
