@@ -1,0 +1,865 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#17264B"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Study Buddy"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-180.png"><title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8F5ED;--card:#FFFDF8;--ink:#202A40;--mut:#55617F;--pk:#243B68;--onpk:#F8F5ED;--pk2:#E6EAF3;--ln:#D3DAEA;--star:#F5C451;--onstar:#17264B;--sw:#6F9CCB;--hero:linear-gradient(150deg,#17264B,#243B68);--fd:'Cormorant Garamond','Tajawal',serif;--ok:#2f7d5c;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17264B;--card:#1D3159;--ink:#F8F5ED;--mut:#A9B8D5;--pk:#6F9CCB;--onpk:#17264B;--pk2:#2A4272;--ln:#38527F;--sw:#A9B8D5;--hero:linear-gradient(150deg,#101B38,#243B68);--ok:#7bc4a1;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17264B;--card:#1D3159;--ink:#F8F5ED;--mut:#A9B8D5;--pk:#6F9CCB;--onpk:#17264B;--pk2:#2A4272;--ln:#38527F;--sw:#A9B8D5;--hero:linear-gradient(150deg,#101B38,#243B68);--ok:#7bc4a1;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Tajawal,"Segoe UI",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+[hidden]{display:none!important}
+.sky{position:fixed;top:0;inset-inline:0;width:100%;height:240px;pointer-events:none;z-index:0;opacity:.5}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(8px);display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+header b{font:600 22px var(--fd);letter-spacing:.2px}#clk{background:var(--pk2);border:1px solid var(--ln);border-radius:14px;padding:6px 14px;font:inherit;font-weight:700;color:var(--ink)}
+main{position:relative;z-index:1;max-width:620px;margin:auto;padding:0 16px 100px}
+h2{margin:8px 0;font:600 28px var(--fd)}h3{margin:6px 0;font:600 22px/1.4 var(--fd)}
+nav{position:fixed;bottom:0;inset-inline:0;z-index:6;display:flex;background:var(--card);border-top:1px solid var(--ln);padding:6px 2px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;background:none;border:0;color:var(--mut);font:inherit;font-size:11px;padding:2px 0}nav button.on{color:var(--pk);font-weight:700}nav span{display:block;font-size:20px;line-height:1.3}
+nav button.on::after{content:"";display:block;width:6px;height:6px;margin:2px auto 0;background:var(--star);transform:rotate(45deg)}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 6px 18px rgba(23,38,75,.07)}
+.hero{background:var(--hero);color:#F8F5ED;border:0;position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(23,38,75,.28)}
+.hero::after{content:"✦";position:absolute;inset-block-start:10px;inset-inline-end:16px;color:var(--star);font-size:20px}
+.hero .tag{background:rgba(245,196,81,.18);color:var(--star)}.hero .mut{color:#A9B8D5}.hero .tm{color:var(--star)}.hero .btn.g{background:rgba(255,255,255,.14);color:#F8F5ED;border-color:transparent}
+.btn{display:block;width:100%;min-height:50px;margin:8px 0;padding:12px 18px;border:0;border-radius:14px;background:var(--star);color:var(--onstar);font:inherit;font-weight:700;font-size:16px}
+.btn:active{transform:scale(.98)}.btn.g{background:var(--pk2);color:var(--ink);border:1px solid var(--ln)}.btn.s{width:auto;min-height:40px;padding:6px 14px;margin:4px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--sw);outline-offset:2px}
+.rw{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.chip{border:1px solid var(--ln);background:var(--card);color:var(--ink);border-radius:14px;padding:6px 12px;margin:3px;font:inherit;font-size:14px}.chip.on{background:var(--pk);color:var(--onpk);border-color:var(--pk)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid .chip{margin:0;min-height:48px}
+.mut{color:var(--mut);font-size:14px}.big{font:600 52px/1.2 var(--fd);color:var(--pk)}.tm{font:600 72px/1.2 var(--fd);text-align:center;font-variant-numeric:lining-nums tabular-nums;color:var(--pk)}
+.bar{height:10px;border-radius:9px;background:var(--pk2);overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--pk);border-radius:9px}
+.bub{background:var(--pk2);border:1px solid var(--ln);border-radius:20px;border-start-start-radius:4px;padding:14px 16px;margin:10px 0}
+input,select{width:100%;min-height:46px;margin:5px 0;padding:8px 12px;border:1px solid var(--ln);border-radius:12px;background:var(--card);color:var(--ink);font:inherit}
+input[type=time],input[type=date]{direction:ltr;text-align:start}
+input[type=checkbox]{width:22px;min-height:22px;margin:0;margin-inline-end:8px;accent-color:var(--pk)}label{font-size:14px;color:var(--mut)}
+.r2{display:flex;gap:10px;padding:10px 12px;margin:6px 0;border-radius:14px;background:var(--card);border:1px solid var(--ln)}.r2 b{white-space:nowrap}.r2 span{flex:1}.r2.done{opacity:.55}.r2.break,.r2.long{background:var(--pk2)}.r2.fixed{border-style:dashed}
+.tag{background:var(--pk2);border-radius:10px;padding:2px 10px;font-size:12px}
+.wk{display:flex;gap:6px;align-items:flex-end;height:90px}.wk div{flex:1;text-align:center;font-size:11px}.wk i{display:block;background:var(--pk);border-radius:6px 6px 0 0;min-height:3px}
+#md{position:fixed;inset:0;z-index:20;background:rgba(16,27,56,.6);display:flex;align-items:flex-end;justify-content:center}
+.box{background:var(--bg);width:100%;max-width:620px;max-height:88%;overflow:auto;border-radius:24px 24px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+#toast{position:fixed;bottom:84px;inset-inline:16px;z-index:30;background:var(--ink);color:var(--bg);border-radius:14px;padding:12px;text-align:center}
+textarea{width:100%;height:90px;border-radius:12px;border:1px solid var(--ln);background:var(--card);color:var(--ink);font-size:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+summary{cursor:pointer;color:var(--pk);font-weight:700;padding:8px 0}details{margin:8px 0}.x{width:34px;height:34px;min-height:0;padding:0;border-radius:50%;border:1px solid var(--ln);background:var(--pk2);color:var(--mut);font:inherit;font-size:14px;line-height:1}.sk{width:100%;height:auto;display:block;border-radius:22px;background:radial-gradient(ellipse at 50% 45%,#243B68,#17264B 72%);border:1px solid var(--ln);margin:8px 0}.tw{animation:tw 3s ease-in-out infinite}@keyframes tw{50%{opacity:.35}}@media(prefers-reduced-motion:reduce){.tw{animation:none}}html,body{overscroll-behavior:none}body{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}input,textarea,select{-webkit-user-select:text;user-select:text}button{touch-action:manipulation}
+.stk{display:flex;align-items:baseline;gap:8px}.stn{font:600 44px var(--fd);color:var(--pk)}.sg{display:inline-block;width:34px;text-align:center;font-size:22px;color:var(--ln)}.sg.on{color:var(--star)}.sg.t{outline:1px dashed var(--pk);border-radius:10px}
+#sf{position:fixed;inset:0;z-index:15;background:radial-gradient(ellipse at 50% 40%,#243B68,#0f1a36 78%);color:#F8F5ED;overflow:hidden;touch-action:none;user-select:none}#sf svg{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+#sf .sft{position:absolute;top:env(safe-area-inset-top,0px);inset-inline:0;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;pointer-events:none;font:600 22px var(--fd)}#sf .sft>*{pointer-events:auto}
+.sfb{width:44px;height:44px;border-radius:50%;border:1px solid rgba(169,184,213,.45);background:rgba(23,38,75,.75);color:#F8F5ED;font:inherit;font-size:20px;margin-inline-start:4px}
+#sf .sfi{position:absolute;bottom:0;inset-inline:0;padding:26px 18px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(15,26,54,.94) 28%);pointer-events:none}#sf .mut{color:#A9B8D5}#sf .bar{background:rgba(255,255,255,.15)}#sf .bar i{background:#F5C451}
+.hr{display:flex;gap:8px;align-items:center}#stk{background:var(--pk2);border:1px solid var(--ln);border-radius:14px;padding:6px 12px;font:inherit;font-weight:700;color:var(--ink)}#stk i{font-style:normal;color:var(--mut);opacity:.6}#stk.on i{color:var(--star);opacity:1}#cl{position:fixed;inset:0;z-index:15;background:var(--bg);color:var(--ink);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 8px) 14px calc(20px + env(safe-area-inset-bottom,0px))}
+#cl .cht{display:flex;align-items:center;gap:8px;margin-bottom:10px}#cl .cn{flex:1;display:flex;align-items:center;justify-content:space-between;gap:4px}#cl .cn b{font:600 20px var(--fd);text-align:center;flex:1}
+#cl .sfb{background:var(--pk2);color:var(--ink);border:1px solid var(--ln);width:40px;height:40px;font-size:18px;margin:0}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.cgrid>b{font-size:12px;padding:4px 0}
+.cd{position:relative;min-height:54px;border-radius:12px;border:1px solid var(--ln);background:var(--card);color:var(--ink);font:inherit;padding:4px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2}.cd small{font-size:11px;opacity:.85;min-height:13px}.cd i{position:absolute;top:2px;inset-inline-end:4px;font-style:normal;font-size:10px;color:var(--star);text-shadow:0 0 2px #17264B}
+.cd.l1{background:color-mix(in srgb,var(--pk) 14%,var(--card))}.cd.l2{background:color-mix(in srgb,var(--pk) 30%,var(--card))}.cd.l3{background:color-mix(in srgb,var(--pk) 55%,var(--card))}.cd.l4{background:var(--pk);color:var(--onpk)}.cd.t{outline:2px dashed var(--pk);outline-offset:1px}.cd:disabled{opacity:.3}
+.cinfo{margin:14px 0 8px;padding:14px;border:1px solid var(--ln);border-radius:18px;background:var(--card)}#qb0{background:var(--pk2);border:1px solid var(--ln);border-radius:14px;padding:4px 11px;font:inherit;font-size:18px;font-weight:700;color:var(--ink)}#qb0.on{color:var(--star)}
+#qm{position:fixed;inset-inline:12px;bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:7;display:flex;align-items:center;gap:6px;padding:6px;border-radius:18px;background:var(--hero);color:#F8F5ED;box-shadow:0 8px 22px rgba(23,38,75,.35)}#qm[hidden]{display:none}.qmt{flex:1;padding:8px 10px;font-weight:700}body.qm main{padding-bottom:170px}
+.qb{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:inherit;display:grid;place-items:center;padding:0}.qb.big{width:60px;height:60px;background:var(--star);color:#17264B}
+#qr{position:fixed;inset:0;z-index:15;background:var(--bg);color:var(--ink);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 8px) 14px calc(20px + env(safe-area-inset-bottom,0px))}#qr .cht{display:flex;align-items:center;gap:8px;margin-bottom:6px}#qr .sfb{background:var(--pk2);color:var(--ink);border:1px solid var(--ln);width:40px;height:40px;font-size:18px;margin:0}.qtt{font:600 22px var(--fd)}
+#qr .qb{background:var(--pk2);color:var(--ink);border:1px solid var(--ln)}#qr .qb.big{background:var(--star);color:#17264B;border:0}.qnow{font:600 26px var(--fd);text-align:center}.qpr{display:flex;align-items:center;gap:8px}.qpr input{flex:1;margin:0;padding:0;min-height:32px}.qc{display:flex;justify-content:center;align-items:center;gap:16px;margin:8px 0}
+.qi{display:flex;gap:12px;align-items:center;width:100%;text-align:start;padding:12px 14px;margin:4px 0;border-radius:14px;border:1px solid var(--ln);background:var(--card);color:var(--ink);font:inherit}.qi.on{background:var(--pk);color:var(--onpk)}.qi.on .mut{color:var(--onpk)}.qi .mut{min-width:26px}.qrow{display:flex;gap:6px;align-items:stretch}.qrow .qi{flex:1}.qrow.qo .qi{opacity:.45}.qd{width:48px;margin:4px 0;border-radius:14px;border:1px solid var(--ln);background:var(--card);color:var(--ink);font:inherit;font-size:20px}.qd.ok{color:var(--ok);font-weight:700}#bgm{position:fixed;inset:0;z-index:16;background:radial-gradient(ellipse at 50% 40%,#243B68,#0f1a36 78%);color:#F8F5ED;display:flex;flex-direction:column;transition:opacity .5s}#bgm.out{opacity:0}
+.bgt{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 6px;font:600 20px var(--fd)}.bgt .chip{background:rgba(23,38,75,.75);color:#F8F5ED;border-color:rgba(169,184,213,.45)}
+#bgs{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}.bgsv{width:min(78vw,60vh);height:auto}.bgl{margin-top:14px;font:600 26px var(--fd);text-align:center;min-height:36px;padding:0 16px}.bgl.big{font-size:24px;line-height:1.5;min-height:80px}
+.bgcv{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.bgbx{position:absolute;inset:0}.bbl{position:absolute;bottom:-110px;border-radius:50%;border:1.5px solid rgba(169,184,213,.7);background:radial-gradient(circle at 30% 30%,rgba(248,245,237,.5),rgba(111,156,203,.18));padding:0;animation:rise linear forwards}.bbl.pop{animation-play-state:paused;scale:1.5;opacity:0;transition:scale .3s,opacity .3s}@keyframes rise{to{transform:translateY(-125vh)}}
+.bgcard{width:min(88vw,420px);text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}.bgp{animation:bgp 1.6s ease-in-out infinite}@keyframes bgp{50%{r:4.2px;opacity:.6}}
+#bgm .bar{width:100%;background:rgba(255,255,255,.15)}#bgm .bar i{background:#F5C451}#bgm .mut{color:#A9B8D5}.bgw{text-align:center;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));min-height:44px;color:#F5C451}.bgi{display:flex;justify-content:center;gap:10px;margin:12px 0 4px}.bgi button{width:54px;height:54px;border-radius:16px;border:1px solid var(--ln);background:var(--pk2);color:var(--ink);display:grid;place-items:center;padding:0}.tpc{margin:6px 0;padding:10px;border-radius:12px;background:var(--pk2);border:1px solid var(--ln);font:600 13px monospace;word-break:break-all;user-select:text}</style></head><body>
+<svg class="sky" viewBox="0 0 400 240" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><g fill="none" stroke="var(--sw)" stroke-width="1.6" stroke-linecap="round"><path d="M-10 150c60-70 120 30 190-20s90-80 150-30s60 20 80 0"/><path d="M-10 178c70-60 130 40 200-10s100-70 220-20"/><path d="M30 60c40-40 90 10 80 50s-60 40-60 5 40-45 70-30"/><path d="M250 70c30-30 70-10 70 20s-40 35-50 10 20-30 40-18"/></g><g fill="var(--star)"><path d="M330 28l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/><path d="M70 20l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M180 44l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/><circle cx="370" cy="110" r="2"/><circle cx="20" cy="120" r="2"/></g></svg><header><b><svg width="20" height="20" viewBox="0 0 24 24" style="vertical-align:-3px;fill:var(--star)"><path d="M12 1l2.5 8.5L23 12l-8.5 2.5L12 23l-2.5-8.5L1 12l8.5-2.5z"/></svg> Study Buddy</b><span class="hr"><button id="qb0" data-a="q" aria-label="القرآن الكريم">♪</button><button id="stk" data-a="stkinfo"><i>✦</i> <span id="stkn">0</span></button><button id="clk" data-a="clock"></button></span></header>
+<main id="app"></main>
+<nav><button data-a="go:home"><span>⌂</span>الرئيسية</button><button data-a="go:plan"><span>▤</span>الجدول</button><button data-a="go:session"><span>◷</span>الجلسة</button><button data-a="go:subs"><span>❏</span>المواد</button><button data-a="go:stats"><span>✧</span>إنجازاتي</button><button data-a="go:set"><span>⚙︎</span>الإعدادات</button></nav>
+<div id="md" hidden></div><div id="toast" hidden></div>
+<script>
+const $=s=>document.querySelector(s),v=id=>document.getElementById(id).value,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,8),DN=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'],PR=['','عالية','متوسطة','منخفضة'],DF=['','سهل','متوسط','صعب'],STL={todo:'لم أبدأ',doing:'قيد الدراسة',done:'مكتمل'};
+const DEF={subs:[],recs:[],set:{study:15,brk:5,long:20,every:3,fmt:24,end:1350,theme:'',lang:'ar'},day:null,log:[],off:0,timer:null,xb:null,view:'home'};
+let S,saveOK=true,W=null,M=null,after=null;
+let KEY,REG,CP;
+try{REG=JSON.parse(localStorage.getItem('sb_reg'))}catch(e){}
+if(!Array.isArray(REG)||!REG.length)REG=[{id:'main',name:'مساحتي'}];
+try{CP=localStorage.getItem('sb_cur')}catch(e){}
+if(!REG.some(p=>p.id==CP))CP='main';
+const keyOf=id=>id=='main'?'sb1':'sb1:'+id;KEY=keyOf(CP);
+try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S={...DEF}}
+S.set={...DEF.set,...S.set};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));saveOK=true}catch(e){saveOK=false}}
+const sysMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()},now=()=>((sysMin()+S.off)%1440+1440)%1440,setNow=m=>{S.off=((m-sysMin()+720)%1440+1440)%1440-720};
+const fmt=m=>{m=((m%1440)+1440)%1440;const h=Math.floor(m/60),mm=String(m%60).padStart(2,'0');return S.set.fmt==24?String(h).padStart(2,'0')+':'+mm:(h%12||12)+':'+mm+(h<12?(S.set.lang=='en'?' AM':' ص'):(S.set.lang=='en'?' PM':' م'))};
+const parse=x=>{if(!x)return null;const[a,b]=x.split(':');return+a*60+ +b},tv=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'),inp=(id,m)=>`<input type="time" id="${id}" value="${tv(m)}">`;
+const mmss=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'),today=()=>new Date().toDateString();
+const iso=(o=0)=>{const d=new Date();d.setDate(d.getDate()+o);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+const LS=()=>S.subs.filter(s=>!s.arch),sub=id=>S.subs.find(s=>s.id==id)||{},rec=id=>S.recs.find(r=>r.id==id),dl=d=>d?Math.ceil((new Date(d)-new Date(new Date().toDateString()))/864e5):null;
+const hero=h=>`<div class="card hero">${h}</div>`,card=h=>`<div class="card">${h}</div>`,bar=p=>`<div class="bar"><i style="width:${p}%"></i></div>`,T=()=>S.xb||S.timer;
+const remain=r=>r.dur&&r.done<r.dur?r.dur-r.done:null,len=b=>b.e-b.s,cur=()=>S.day&&S.day.blocks.find(b=>b.st=='todo');
+const sc=r=>{const s=sub(r.sid),d=[dl(s.exam),dl(r.dl)].filter(x=>x!=null&&x>=0);return(r.prio||s.prio||2)*1e4+(d.length?Math.min(...d):999)+(S.day&&S.day.pin==r.sid?-1e6:0)};
+const queue=sids=>S.recs.filter(r=>sids.includes(r.sid)&&r.status!='done'&&!r.later&&!sub(r.sid).arch).sort((a,b)=>sc(a)-sc(b)||a.num-b.num);
+const rname=r=>esc(sub(r.sid).name)+' · '+esc(r.title||('مهمة '+r.num)),tmed=r=>r&&(r.method=='audio'||r.method=='video');
+function from(b){const r=rec(b.rid);if(!r)return 0;let x=r.done;for(const o of S.day.blocks){if(o===b)break;if(o.st=='todo'&&o.rid==b.rid)x+=len(o)}return x}
+const lab=b=>b.type=='study'?`${rname(rec(b.rid)||{sid:0,num:'؟'})} — ${len(b)} د${tmed(rec(b.rid))?` (من الدقيقة ${from(b)})`:''}`:b.type=='break'?'استراحة ☕':b.type=='long'?'استراحة طويلة 🌿 وقت للحركة وشرب الماء':esc(b.l);
+function build(t,fixed,sids,en,n,l0){const s=S.set,L=en=='tired'?Math.min(s.study,10):s.study,cap=(en=='good'?10:en=='mid'?7:4)+(S.day&&S.day.extra||0),out=[],left=[];let c=n,stop=false,last=l0?1:0;
+for(const r of queue(sids)){if(stop){left.push(r.id);continue}
+let rem=remain(r),k=0;const mx=rem==null?3:Math.ceil(rem/L);
+while(k<mx){if(c>=cap){stop=true;break}
+const l=rem==null?L:Math.min(L,rem);let u=t,bk=null;if(last){bk=c%s.every==0?['long',s.long]:['break',s.brk];u=t+bk[1]}
+let p=u;for(let i=0;i<9;i++){const f=fixed.find(f=>f.s<p+l&&f.e>p);if(!f)break;p=f.e}
+if(p+l>s.end){stop=true;break}
+if(bk&&p==u)out.push({id:uid(),type:bk[0],s:t,e:u,st:'todo'});
+out.push({id:uid(),type:'study',s:p,e:p+l,rid:r.id,st:'todo'});t=p+l;last=1;c++;k++;if(rem!=null)rem-=l}
+if(stop)left.push(r.id)}
+return{out,left}}
+function replan(t,en,keep){const D=S.day;if(!D)return;if(en)D.en=en;const c=keep&&S.timer&&cur()&&cur().id==S.timer.bid?cur():null,k=D.blocks.filter(b=>b.st!='todo'||b===c),n=k.filter(b=>b.type=='study'&&(b.st=='done'||b===c)).length,r=build(c?Math.max(t,c.e):t,D.fixed,D.sids,D.en,n,c&&c.type=='study');D.blocks=k.concat(r.out).sort((a,b)=>a.s-b.s);D.left=r.left;if(!c)S.timer=null}
+const late=b=>b&&b.s+5<=now()&&!(S.timer&&S.timer.bid==b.id)&&!S.xb;
+const lateBn=()=>late(cur())?`<div class="card"><p>الجدول صار قديماً قليلاً، وهذا طبيعي تماماً. يمكنك تثبيت الوقت وسأعيد ترتيب الباقي.</p><button class="btn g" data-a="late">إعادة ترتيب الباقي من الآن</button></div>`:'';
+const rp=r=>r.status=='done'?'✓':r.dur?Math.round(100*Math.min(r.done/r.dur,1))+'%':r.done?r.done+'د':'—';
+const pct=rs=>rs.length?Math.round(100*rs.reduce((a,r)=>a+(r.status=='done'?1:r.dur?Math.min(r.done/r.dur,1):0),0)/rs.length):0;
+function toast(m){const t=$('#toast');t.textContent=tl(m);t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2600)}
+function modal(t,b,ok,fn){M=fn;$('#md').innerHTML=`<div class="box"><h3>${t}</h3>${b}${ok?`<button class="btn" data-a="mok">${ok}</button>`:''}<button class="btn g" data-a="mx">إغلاق</button></div>`;$('#md').innerHTML=tl($('#md').innerHTML);$('#md').hidden=false}
+const A={};
+A.mx=()=>{$('#md').hidden=true;M=null;after=null};
+A.mok=()=>{const f=M;if(f&&f()===false)return;if(M===f)A.mx()};
+document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const[a,...p]=t.dataset.a.split(':');if(e.target.id=='md')return;A[a]&&A[a](...p)});
+document.addEventListener('change',e=>{const k=e.target.dataset.set;if(!k)return;const x=e.target.value;S.set[k]=k=='theme'||k=='lang'||k=='bg'?x:k=='end'?(parse(x)||1350):+x;theme();render()});
+const TRS=`نشاط للاستراحة (اختياري). يُغلق تلقائياً عند انتهاء الاستراحة.¦A break activity (optional). It closes automatically when the break ends.
+إشعارات الجوال¦Phone notifications
+للتنبيه عند نهاية الجلسة ونهاية الاستراحة.¦To alert you when a session or break ends.
+إشعار المتصفح: ¦Browser notification: 
+مفعّل¦On
+معطّل¦Off
+يعمل غالباً ما دام التطبيق مفتوحاً أو في الخلفية، لكن أندرويد قد يوقفه عند إغلاق التطبيق.¦Usually works while the app is open or in the background, but Android may stop it once the app is closed.
+إشعار خارج التطبيق (ntfy): ¦Outside-the-app notification (ntfy): 
+1) ثبّت تطبيق ntfy (من Google Play أو F-Droid).¦1) Install the ntfy app (from Google Play or F-Droid).
+2) اشترك في القناة التالية:¦2) Subscribe to this channel:
+>نسخ<¦>Copy<
+فتح في ntfy¦Open in ntfy
+اختبار الإشعار¦Test notification
+اسم القناة سرّي، والرسائل نص عام بدون بياناتك. تُرسَل عبر خدمة ntfy.sh (طرف ثالث).¦The channel name is secret and messages are generic text without your data. They are sent through the ntfy.sh service (a third party).
+هذا المتصفح لا يدعم الإشعارات¦This browser doesn’t support notifications
+لم يُسمح بالإشعارات¦Notifications weren’t allowed
+تم نسخ اسم القناة¦Channel name copied
+أُرسل الإشعار التجريبي¦Test notification sent
+تعذر الإرسال. تحقق من الاتصال.¦Couldn’t send. Check your connection.
+إشعار تجريبي: إذا ظهر هذا فالتنبيهات تعمل.¦Test: if you see this, notifications work.
+انتهت جلسة الدراسة. حان وقت تسجيل ما أنجزته والاستراحة.¦Study session finished. Time to log what you did and take a break.
+انتهت الاستراحة. حان وقت العودة.¦Break finished. Time to get back.
+تنفّس بالنجمة¦Star breathing
+رسم الدوّامة¦Swirl drawing
+فقاعات هادئة¦Calm bubbles
+ربط النجوم¦Connect the stars
+تمدد وحركة¦Stretch & move
+نشاط الاستراحة¦Break activity
+>بدون<¦>None<
+تبديل تلقائي¦Rotate automatically
+يفتح النشاط تلقائياً مع بداية عدّاد الاستراحة ويُغلق فور انتهائه. بدون نقاط ولا خسارة ولا صوت، ويمكن تخطّيه في أي لحظة.¦The activity opens automatically when the break timer starts and closes the moment it ends. No scores, no losing, no sound, and you can skip it any time.
+تجربة النشاط الآن¦Try the activity now
+تنتهي الاستراحة بعد ¦The break ends in 
+ ثانية¦ seconds
+فقاعة¦Bubble
+شهيق¦Inhale
+ثبات¦Hold
+زفير¦Exhale
+أحسنت ✦ كوكبة جديدة بعد قليل¦Well done ✦ a new constellation soon
+تحريك الكتفين بدوائر بطيئة¦Roll your shoulders in slow circles
+مدّ الذراعين للأعلى مع شهيق عميق¦Reach your arms up with a deep breath in
+تحريك الرقبة يميناً ويساراً ببطء¦Turn your neck gently left and right
+الوقوف والانحناء للأمام بلطف¦Stand and bend forward gently
+فتح القبضتين وإغلاقهما 10 مرات¦Open and close your fists 10 times
+رشفة ماء¦Take a sip of water
+النظر إلى شيء بعيد ثم قريب لراحة العينين¦Look at something far, then near, to rest your eyes
+المشي بضع خطوات¦Walk a few steps
+بدون إجهاد. يُنصح بتجنّب أي حركة تسبب ألماً.¦No strain. Avoid any movement that causes pain.
+المحمّل: ¦Downloaded: 
+ سورة · ¦ surahs · 
+ ميغابايت¦ MB
+هذه السورة غير محمّلة. حمّلها أولاً للاستماع بدون إنترنت.¦This surah isn’t downloaded. Download it first to listen offline.
+تم تنزيل السورة للاستماع بدون إنترنت.¦Downloaded for offline listening.
+تعذر التنزيل. تحقق من الاتصال وحاول مرة أخرى.¦Download failed. Check your connection and try again.
+لا يوجد اتصال بالإنترنت للتنزيل.¦No internet connection to download.
+توقف التنزيل. تحقق من الاتصال ثم حاول مجدداً.¦Download stopped. Check your connection and try again.
+تنزيل الكل للاستماع بدون إنترنت¦Download all for offline listening
+حذف التنزيلات¦Delete downloads
+جارٍ التنزيل ¦Downloading 
+ · إيقاف¦ · Stop
+تنزيل كل السور؟¦Download all surahs?
+تنزيل كل السور قد يحتاج مئات الميغابايت أو أكثر من جيجابايت من المساحة. يُفضّل استخدام شبكة Wi‑Fi.¦Downloading every surah can take hundreds of MB or more than 1 GB of space. Wi‑Fi is recommended.
+ابدأ التنزيل¦Start download
+حذف التنزيل؟¦Delete this download?
+حذف كل التنزيلات؟¦Delete all downloads?
+ستُحذف السور المحمّلة من هذا الجهاز.¦The downloaded surahs will be deleted from this device.
+aria-label="تنزيل للاستماع بدون إنترنت"¦aria-label="Download for offline listening"
+aria-label="إغلاق المشغّل"¦aria-label="Close player"
+القرآن الكريم¦Holy Quran
+سورة ¦Surah 
+اختيار سورة للتشغيل¦Choose a surah to play
+>القارئ<¦>Reciter<
+placeholder="بحث عن سورة"¦placeholder="Search for a surah"
+تشغيل متتابع¦Play in order
+تكرار السورة¦Repeat surah
+إيقاف بعد السورة¦Stop after surah
+تلاوة هذا القارئ غير متوفرة، تم التحويل إلى العفاسي¦This reciter’s recitation isn’t available; switched to Alafasy
+تعذر تشغيل الصوت. تحقق من الاتصال بالإنترنت¦Couldn’t play the audio. Check your internet connection
+حمّل السور بزر ↓ لتسمعها بدون إنترنت.¦Use the ↓ button to download surahs and listen without internet.
+aria-label="تشغيل / إيقاف"¦aria-label="Play / pause"
+aria-label="التالي"¦aria-label="Next"
+aria-label="السابق"¦aria-label="Previous"
+عرض التقويم ‹¦View calendar ›
+المس يوماً لعرض تفاصيله.¦Tap a day to see its details.
+لا توجد دراسة مسجّلة في هذا اليوم.¦No study recorded on this day.
+عدد الجلسات: ¦Sessions: 
+ · ✦ نجمة الاستمرار¦ · ✦ streak star
+أيام الدراسة: ¦Study days: 
+سلسلة الدراسة¦Study streak
+كل يوم دراسة (30 دقيقة على الأقل) يضيف نجمة، وإذا فات يوم كامل تعود السلسلة إلى الصفر.¦Each study day (at least 30 minutes) adds a star; if a whole day is missed the streak returns to zero.
+✦ نجمات الاستمرار¦✦ Streak stars
+أفضل سلسلة: ¦Best streak: 
+يوم متتالٍ¦day in a row
+أيام متتالية¦days in a row
+تم تحقيق هدف اليوم ✦ (30 دقيقة)¦Today’s goal reached ✦ (30 min)
+تبقّى ¦Left 
+ للحفاظ على سلسلتك اليوم¦ to keep your streak today
+30 دقيقة دراسة اليوم تكفي لبدء سلسلة جديدة¦30 minutes of study today is enough to start a new streak
+نجمة جديدة في سلسلتك ✦¦A new star in your streak ✦
+aria-label="إغلاق"¦aria-label="Close"
+الفضاء لا ينتهي: اسحب للتنقل، واقرص بإصبعين للتكبير والتصغير. المس نجمة أو كوكباً لتعرف قصته.¦Space never ends: drag to move, pinch with two fingers to zoom. Tap a star or planet to see its story.
+تثبيت كتطبيق¦Install as an app
+لفتح Study Buddy بملء الشاشة بدون شريط المتصفح: افتح الرابط في Chrome، ثم قائمة ⋮ ← «تثبيت التطبيق».¦To open Study Buddy full screen without the browser bar: open the link in Chrome, then menu ⋮ → “Install app”.
+الإصدار: ¦Version: 
+مجرّتي¦My Galaxy
+نجمة جديدة في مجرّتك ✦¦A new star in your galaxy ✦
+كوكب جديد في مجرّتك ✦¦A new planet in your galaxy ✦
+مجرّتك الخاصة¦Your very own galaxy
+كوكبة¦Constellation
+سماء مرصّعة¦Starry sky
+سماء هادئة¦Quiet sky
+نجوم: ¦Stars: 
+ · كواكب: ¦ · Planets: 
+باقي ¦Left: 
+ للكوكب التالي¦ to next planet
+المس نجمة أو كوكباً لتعرف قصته.¦Tap a star or planet to see its story.
+سماؤك هادئة بعد. عند إنهاء مادة تظهر نجمة، ومع كل ساعتين دراسة يظهر كوكب.¦Your sky is still quiet. Finishing a subject adds a star, and every two hours of study adds a planet.
+أنهيت هذه المادة بتاريخ ¦Finished this subject on 
+ظهر عند بلوغ ¦Appeared at 
+ ساعة دراسة¦ study hours
+كوكب ¦Planet 
+إزالة المادة؟¦Remove subject?
+ستُزال المادة من قائمتك وخطتك، وتبقى إنجازاتك وسجل دراستك محفوظين في الإحصائيات.¦The subject is removed from your list and plan; your achievements and study history stay saved in your statistics.
+>إزالة<¦>Remove<
+aria-label="إزالة المادة"¦aria-label="Remove subject"
+ (مؤرشفة)¦ (removed)
++ إضافة مهمة (اختياري)¦+ Add a task (optional)
+ما هي «المهمة»؟¦What is a “task”?
+جزء محدد تريد دراسته من المادة، مثل «الفصل 3» أو «تمارين المجموعة 2» أو «مراجعة المحاضرة 5». تحدّد لها مدة تقديرية اختيارية ويوزّع التطبيق جلسات التركيز عليها. لا حاجة لإضافة مهام: إن تركتها فارغة تُنشأ جلسات «دراسة عامة» للمادة.¦A specific part of the subject you want to study, such as “Chapter 3”, “Problem set 2” or “Review lecture 5”. You can give it an optional estimated duration and the app spreads focus sessions across it. You don’t need to add tasks: if you leave this empty, “General study” sessions are created for the subject.
+مهمة (اختياري)¦Task (optional)
+دراسة عامة¦General study
+اكتملت خطة اليوم 🎉 يمكنك مواصلة الدراسة من صفحة المواد أو إضافة مادة أخرى.¦Today’s plan is complete 🎉 You can keep studying from the Subjects page or add another subject.
+لا توجد جلسات لليوم بعد. يمكنك اختيار مادة وبدئها من صفحة المواد.¦No sessions for today yet. You can pick a subject and start it from the Subjects page.
+بدء المادة¦Start subject
+أضف مهمة لهذه المادة أولاً¦Add a task for this subject first
+مساحتي الشخصية¦My personal space
+المساحة الشخصية: ¦Personal space: 
+لكل مساحة مواد ومهام وسجل وإعدادات منفصلة تماماً على هذا المتصفح.¦Each space has completely separate subjects, tasks, history and settings in this browser.
+لكل مساحة مواد ومهام وسجل وإعدادات خاصة بها. بياناتك محفوظة على هذا المتصفح فقط، ولا تظهر على أجهزة أو متصفحات أخرى، وهي غير محمية بكلمة سر.¦Each space has its own subjects, tasks, history and settings. Your data is stored in this browser only, doesn’t appear on other devices or browsers, and isn’t password-protected.
+تبديل أو إدارة المساحات¦Switch or manage spaces
+مساحتي¦My space
+>فتح<¦>Open<
+placeholder="اسم مساحة جديدة"¦placeholder="New space name"
++ مساحة جديدة¦+ New space
+أدخل اسم المساحة¦Enter a space name
+حذف المساحة؟¦Delete this space?
+ستُحذف كل بياناتها نهائياً.¦All its data will be permanently deleted.
+تثبيت Study Buddy¦Install Study Buddy
+يمكنك تثبيت التطبيق لفتحه بملء الشاشة بدون شريط المتصفح.¦You can install the app to open it full screen without the browser bar.
+لفتحه بملء الشاشة: من قائمة المتصفح (⋮) اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق».¦To open it full screen: from the browser menu (⋮) choose “Add to Home screen” or “Install app”.
+تثبيت التطبيق¦Install app
++ إضافة مادة¦+ Add subject
++ إضافة مهمة¦+ Add task
+مهمة جديدة¦New task
+مهمة أولى (اختياري)¦First task (optional)
+مهمة ¦Task 
+>المادة<¦>Subject<
+عنوان المهمة¦Task title
+placeholder="عنوان المهمة"¦placeholder="Task title"
+placeholder="المدة التقديرية بالدقائق"¦placeholder="Estimated duration in minutes"
+مثال: الفصل 3 / تمارين المجموعة 2¦e.g. Chapter 3 / Problem set 2
+المدة التقديرية بالدقائق (اختياري)¦Estimated duration in minutes (optional)
+الأولوية (اختياري)¦Priority (optional)
+الموعد النهائي (اختياري)¦Deadline (optional)
+طريقة الدراسة (اختياري)¦Study method (optional)
+ملاحظات (اختياري)¦Notes (optional)
+>غير محدد<¦>Not specified<
+>قراءة<¦>Reading<
+>فيديو<¦>Video<
+>صوت<¦>Audio<
+>تمارين<¦>Exercises<
+>مراجعة<¦>Revision<
+>محاضرة مباشرة<¦>Live lecture<
+>أخرى<¦>Other<
+متى؟¦When?
+>لاحقاً<¦>Later<
+بدون تغيير¦No change
+أدخل عنوان المهمة¦Enter a task title
+لا توجد مهام لليوم بعد.¦No tasks for today yet.
+اكتملت خطة اليوم 🎉 يمكنك إضافة مهمة لليوم أو تركها لوقت لاحق.¦Today’s plan is complete 🎉 You can add a task for today or leave it for later.
+انتهى يومك. أحسنت، وتستحق الراحة. يمكنك إضافة مهمة لليوم متى شئت.¦Your day is complete. Well done, you deserve a rest. You can add a task for today any time.
+جاهز للبدء؟ ابدأ فوراً بما لديك، أو رتّب يومك بضعة أسئلة بسيطة.¦Ready? Start right away with what you have, or plan your day with a few simple questions.
+ابدأ الآن¦Start now
+ترتيب مفصّل¦Detailed setup
+أهلاً بك ✦ خطّط لما تريد دراسته، واختر مدة التركيز، وخذ استراحاتك، وتابع تقدّمك. ابدأ بمادة واحدة، ويمكنك إضافة غيرها في أي وقت.¦Welcome ✦ Plan what you need to study, choose how long to focus, take breaks, and track your progress. Start with one subject; add more any time.
+ما المواد التي تريد دراستها اليوم؟ يمكنك البدء بمادة واحدة وإضافة غيرها في أي وقت.¦Which subjects do you want to study today? You can start with just one and add more any time.
+متابعة من الدقيقة ¦Continue from minute 
+(المدة التقديرية ¦(Estimated 
+ — أنجزت ¦ — done 
+(أنجزت ¦(done 
+إذا انتهى الوقت ولم تنتهِ المهمة نتابع لاحقاً من حيث وصلت.¦If time runs out before the task is done, we’ll continue from where you left off.
+كم دقيقة درست فعلياً؟¦How many minutes did you actually study?
+هل فهمت ما درسته؟¦Did you understand what you studied?
+أنهيت المهمة كاملة¦I finished the whole task
+إضافة المواد أولاً¦Add subjects first
+إعادة ترتيب الباقي من الآن¦Reorganize the rest from now
+الجدول صار قديماً قليلاً، وهذا طبيعي تماماً. يمكنك تثبيت الوقت وسأعيد ترتيب الباقي.¦The plan is a little behind, which is perfectly fine. Confirm the time and I’ll reorganize the rest.
+استراحة طويلة 🌿 وقت للحركة وشرب الماء¦Long break 🌿 time to move and drink water
+أهلاً بك ✦ أنا رفيق دراستك. ابدأ بإضافة موادك وتسجيلاتك، ثم نرتّب يومك معاً.¦Welcome ✦ I’m your study companion. Start by adding your subjects and recordings, then we’ll plan your day together.
+إضافة موادي¦Add my subjects
+انتهى يومك. أحسنت، وتستحق الراحة.¦Your day is complete. Well done, you deserve a rest.
+هل نرتّب يومك؟ بضعة أسئلة بسيطة، ويمكنك تخطّي أي سؤال.¦Shall we plan your day? A few simple questions, and you can skip any of them.
+لنرتّب يومي¦Plan my day
+تقدّم اليوم¦Today’s progress
+الجلسة التالية¦Next session
+التالي: استراحة¦Next: break
+فتح الجلسة¦Open session
+اكتملت خطة اليوم 🎉 وما تبقّى يتوزّع على الأيام القادمة.¦Today’s plan is complete 🎉 Anything left will move to upcoming days.
+لا توجد جلسة الآن. افتح الرئيسية لترتيب يومك.¦No session right now. Open Home to plan your day.
+خذ وقتك للراحة 🌿¦Take your time to rest 🌿
+المهمة: متابعة الاستماع من الدقيقة¦Task: continue listening from minute
+إذا انتهى الوقت ولم ينتهِ التسجيل، نتابع من المكان نفسه.¦If time runs out before the recording ends, we resume from the same spot.
+تُوقَف الجلسة مؤقتاً ويمكنك المتابعة بعدها.¦The session is paused so you can resume afterwards.
+التمديد متاح للاستراحة فقط¦Extending is for breaks only
+انتهى الوقت ✦¦Time’s up ✦
+أحسنت! يمكنك الآن تسجيل ما أنجزته في الجلسة.¦Well done! Log what you completed in this session.
+تسجيل الجلسة¦Log session
+انتهت الاستراحة. الخطوة التالية جاهزة.¦The break is over. The next step is ready.
+انتهت الجلسة¦Session complete
+كم دقيقة درست فعلياً؟¦How many minutes did you actually listen?
+هل فهمت ما درسته؟¦Did you understand this part?
+نعم، فهمت¦Yes, I understood
+فهمت جزءاً<¦Partly<
+أحتاج إلى مراجعة جزء¦I need to review a part
+أنهيت المهمة كاملة¦I finished the whole recording
+تم حفظ تقدّمك. أحسنت!¦Progress saved. Well done!
+إذا كانت ساعة الجهاز غير مضبوطة، عدّل الوقت هنا.¦If your device clock is off, adjust it here.
+لا تُحسب الجلسات الفائتة منجزة، ويُحتفظ بإنجازك الفعلي فقط.¦Missed sessions aren’t counted as done; only your real progress is kept.
+كم الساعة الآن؟¦What time is it now?
+ترتيب الباقي¦Reorganize
+لا بأس¦No worries
+التعب ليس فشلاً. ماذا تفضّل؟¦Being tired isn’t failing. What would you prefer?
+جلسات أقصر (10 دقائق)¦Shorter sessions (10 min)
+استراحة 10 دقائق¦10-minute break
+يكفي لليوم¦That’s enough for today
+تم تخفيف الجلسات¦Sessions lightened
+تقدّم المادة الحالية يبقى محفوظاً.¦Progress on the current subject stays saved.
+تم تغيير المادة¦Subject changed
+إنهاء اليوم؟¦End the day?
+ما لم يكتمل يُؤجَّل ليوم آخر، وكل ما أنجزته محفوظ.¦Anything unfinished moves to another day; everything you completed is saved.
+لا يوجد جدول لليوم بعد.¦No plan for today yet.
+ترتيب يومي¦Plan my day
+الوقت متأخر قليلاً. الأفضل الراحة ونتابع غداً 🌙¦It’s getting late. Rest, and we’ll continue tomorrow 🌙
+مرحباً ✦ كم الساعة الآن عندك؟ عدّلها إذا لم تكن مضبوطة.¦Hello ✦ What time is it for you now? Adjust it if it’s off.
+هل لديك دوام اليوم (جامعة أو مدرسة)؟¦Do you have classes today (university or school)?
+>نعم<¦>Yes<
+هل هناك التزامات أو مواعيد يجب مراعاتها؟ (غداء، موعد…)¦Any commitments or appointments to plan around? (lunch, appointment…)
++ إضافة¦+ Add
+تحقق من الوقت¦Check the time
+ما المواد التي تريد دراستها اليوم؟¦Which subjects do you want to study today?
+الرقم = تسجيلات لم تنتهِ. أضف التسجيلات من صفحة المواد.¦The number = unfinished recordings. Add recordings from the Subjects page.
+هل تعرف مدة هذه التسجيلات؟ إن لم تعرف، اختر «لا أعرف» ونتابع دون افتراض.¦Do you know how long these recordings are? If not, choose “I don’t know” and we’ll continue without assuming.
+لا أعرف المدة¦I don’t know the length
+مدة كل تسجيلاتك معروفة أو لا توجد تسجيلات. تابع.¦All your recordings have known lengths, or there are none. Continue.
+كيف طاقتك الآن؟¦How is your energy right now?
+جيدة¦Good
+متوسطة¦Medium
+متعبة¦Tired
+هل بدأت الدراسة اليوم؟ إن كان نعم، ماذا أنجزت؟¦Have you already studied today? If so, what did you complete?
+لم أدرس شيئاً بعد¦Haven’t studied yet
+إنشاء جدولي¦Create my plan
+اختر مادة واحدة على الأقل¦Choose at least one subject
+ستُحذف جميع مهامها أيضاً.¦All its tasks will be deleted too.
+المدة بالدقائق (اتركها فارغة إن لم تعرفها)¦Length in minutes (leave empty if unknown)
+كم دقيقة أنجزت؟¦Minutes completed
+لا توجد مواد بعد. ابدأ بإضافة أول مادة.¦No subjects yet. Start by adding your first subject.
+لا توجد بيانات بعد.¦No data yet.
+كل دقيقة تُحتسب، حتى لو لم ينتهِ كل شيء اليوم.¦Every minute counts, even if not everything got done today.
+تُحفظ البيانات تلقائياً على هذا المتصفح (وتُفقد إذا مُسحت بيانات المتصفح). صدّر نسخة احتياطية من وقت لآخر.¦Data is saved automatically in this browser (and lost if browser data is cleared). Export a backup now and then.
+⚠️ التخزين المحلي غير متاح هنا، فلن تُحفظ البيانات. استخدم التصدير لنسخ بياناتك.¦⚠️ Local storage isn’t available here, so data won’t be saved. Use Export to copy your data.
+placeholder="الصق نسخة محفوظة هنا للاستيراد"¦placeholder="Paste a saved backup here to import"
+مسح كل البيانات¦Reset everything
+يعتمد المؤقت على ساعة الجهاز فيبقى دقيقاً حتى لو غادرت الصفحة، لكن لا يوجد صوت أو إشعار والصفحة مغلقة؛ يظهر التنبيه عند فتحها.¦The timer follows your device clock, so it stays accurate even if you leave the page, but there’s no sound or notification while it’s closed; the alert appears when you reopen it.
+تم التصدير. انسخ النص واحفظه.¦Exported. Copy the text and save it.
+النص غير صالح¦Invalid text
+لا يمكن التراجع إلا بوجود نسخة مصدّرة.¦This can’t be undone unless you have an exported backup.
+تمام، جدول جديد من ¦OK, new plan from 
+الأحد¦Sunday
+الاثنين¦Monday
+الثلاثاء¦Tuesday
+الأربعاء¦Wednesday
+الخميس¦Thursday
+الجمعة¦Friday
+السبت¦Saturday
+</span>الجدول<¦</span>Plan<
+</span>الجلسة<¦</span>Session<
+الرئيسية¦Home
+المواد¦Subjects
+إنجازاتي¦Progress
+الإعدادات¦Settings
+عالية¦High
+متوسطة¦Medium
+منخفضة¦Low
+سهل¦Easy
+متوسط¦Medium
+صعب¦Hard
+لم أبدأ¦Not started
+قيد الدراسة¦In progress
+مكتمل¦Done
+استراحة طويلة¦Long break
+استراحة إضافية¦Extra break
+استراحة ☕¦Break ☕
+استراحة¦Break
+ · تسجيل ¦ · Recording 
+(من الدقيقة¦(from minute
+من الدقيقة¦from minute
+مهام: ¦Tasks: 
+مهام مكتملة¦Tasks completed
+تسجيلات¦Recordings
++ مهمة¦+ Task
+مهمة جديدة¦New task
+حذف المهمة¦Delete task
+رقم التسجيل¦Recording number
+موادي ومهامي¦My subjects & tasks
+تسجيل¦recording
+ جلسة · ¦ sessions · 
+ من ¦ of 
+ دقيقة¦ min
+ دقائق¦ min
+(المدة ¦(Length 
+ (المدة غير معروفة)¦ (length unknown)
+تقريباً ¦about 
+>ابدأ<¦>Start<
+إيقاف مؤقت¦Pause
+استئناف¦Resume
+أنهيت الجلسة¦Finished session
+أنهيت الاستراحة¦Finished break
+إعادة ضبط¦Reset
+بدأت الدراسة¦I started studying
+أريد استراحة¦I want a break
+أريد تمديد الاستراحة¦Extend break
+تأخرت عن الجدول¦I’m behind schedule
+تعبت ولا أستطيع التركيز¦I’m tired / can’t focus
+أريد تغيير المادة¦Change subject
+أريد إنهاء يوم الدراسة¦End study day
+أريد رؤية إنجازاتي¦See my progress
+كم دقيقة استراحة؟¦How long a break?
+>تمام<¦>OK<
+كم دقيقة؟¦How many minutes?
+>حفظ<¦>Save<
+>إغلاق<¦>Close<
+>تثبيت<¦>Confirm<
+نرتّب من جديد؟¦Reorganize?
+أي مادة؟¦Which subject?
+إنهاء اليوم؟¦End the day?
+إنهاء اليوم¦End day
+جدول اليوم¦Today’s plan
+إعادة ترتيب من الوقت الحالي¦Reorganize from current time
+إعداد يوم جديد¦Set up a new day
+إعداد اليوم¦Day setup
+سؤال ¦Question 
+>لا<¦>No<
+>من<¦>From<
+>إلى<¦>To<
+placeholder="الاسم"¦placeholder="Name"
+>حذف<¦>Delete<
+>التالي<¦>Next<
+>تخطّي<¦>Skip<
+>رجوع<¦>Back<
+أقل من 30 دقيقة¦Under 30 min
+من 30 إلى 45¦30 to 45
+من 45 إلى 60¦45 to 60
+أكثر من ساعة¦Over an hour
+مادة جديدة¦New subject
+placeholder="اسم المادة"¦placeholder="Subject name"
+موعد الامتحان (اختياري)¦Exam date (optional)
+الأولوية¦Priority
+تعديل المادة¦Edit subject
+حذف المادة؟¦Delete subject?
+حذف المادة¦Delete subject
+الحالة¦Status
+الصعوبة¦Difficulty
+أولوية ¦Priority: 
+ · مكتمل ¦ · Done 
+الإنجاز الفعلي¦Actual progress
+المدة؟¦Length?
+>تعديل<¦>Edit<
+>اليوم<¦>Today<
+المجموع¦Total
+آخر 7 أيام (دقائق)¦Last 7 days (minutes)
+حسب المادة¦By subject
+مدة الدراسة¦Study length
+الاستراحة القصيرة¦Short break
+الاستراحة الطويلة¦Long break
+استراحة طويلة بعد¦Long break after
+جلستين¦2 sessions
+3 جلسات¦3 sessions
+4 جلسات¦4 sessions
+نظام الوقت¦Time format
+24 ساعة¦24-hour
+12 ساعة¦12-hour
+المظهر¦Theme
+>تلقائي<¦>Auto<
+>فاتح<¦>Light<
+>داكن<¦>Dark<
+اللغة¦Language
+آخر وقت للدراسة¦Latest study time
+حفظ البيانات¦Data storage
+>تصدير<¦>Export<
+>استيراد<¦>Import<
+عن المؤقت¦About the timer
+تم الاستيراد ✓¦Imported ✓
+مسح كل البيانات؟¦Reset all data?
+مسح كل البيانات¦Reset everything
+>مسح<¦>Reset<
+ يوماً¦ days
+ · الامتحان بعد ¦ · Exam in 
+رُحِّل ¦Moved 
+ مهمة/مهام إلى الأيام القادمة لعدم كفاية وقت اليوم.¦ task(s) to upcoming days: not enough time today.`;const TR=TRS.split('\n').map(l=>l.split('¦')).sort((a,b)=>b[0].length-a[0].length);
+function tl(h){if(S.set.lang!='en')return h;for(const[a,e] of TR)h=h.split(a).join(e);return h.replace(/(\d)\s?د(?![\u0600-\u06FF])/g,'$1 min')}
+const NAV0=$('nav').innerHTML;
+function theme(){const r=document.documentElement,en=S.set.lang=='en';S.set.theme?r.setAttribute('data-theme',S.set.theme):r.removeAttribute('data-theme')+`<p class="mut" style="text-align:center">الإصدار: 16 ✦ مجرّتي</p>`;r.lang=en?'en':'ar';r.dir=en?'ltr':'rtl';$('nav').innerHTML=tl(NAV0);{const m=document.querySelector('meta[name=theme-color]'),dk=S.set.theme=='dark'||(!S.set.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=dk?'#17264B':'#F8F5ED'}document.title=en?'Study Buddy':'Study Buddy — رفيق الدراسة'}
+const V={};
+function render(){skyCheck();stkCheck();save();ntSync();$('#app').innerHTML=tl((V[S.view]||V.home)());$('#clk').textContent=fmt(now());{const b=$('#stk');$('#stkn').textContent=streak();b.classList.toggle('on',dayMin(iso())>=30);if(b.setAttribute)b.setAttribute('aria-label',tl('سلسلة الدراسة'));const q0=$('#qb0');if(q0&&q0.setAttribute)q0.setAttribute('aria-label',tl('القرآن الكريم'))}document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n.dataset.a=='go:'+S.view))}
+A.go=x=>{S.view=x;if(x=='setup')initW();render();scrollTo(0,0)};
+/* home */
+V.home0=()=>{const D=S.day,b=cur(),ad=LS().length?'<button class="btn g" data-a="addS">+ إضافة مادة</button>':'';
+let h=card(`<div style="text-align:center"><div class="big">${fmt(now())}</div><div class="mut">${DN[D?D.dow:new Date().getDay()]}</div><button class="chip" data-a="prof">◍ ${esc((REG.find(p=>p.id==CP)||{}).name)}</button></div>`);
+if(!LS().length)return h+card('<p>أهلاً بك ✦ خطّط لما تريد دراسته، واختر مدة التركيز، وخذ استراحاتك، وتابع تقدّمك. ابدأ بمادة واحدة، ويمكنك إضافة غيرها في أي وقت.</p><button class="btn" data-a="addS">+ إضافة مادة</button>');
+if(!D||D.ended)return h+card(`<p>${D?'انتهى يومك. أحسنت، وتستحق الراحة. يمكنك إضافة مهمة لليوم متى شئت.':'جاهز للبدء؟ ابدأ فوراً بما لديك، أو رتّب يومك بضعة أسئلة بسيطة.'}</p><button class="btn" data-a="quick">ابدأ الآن</button><button class="btn g" data-a="go:setup">ترتيب مفصّل</button>`)+ad;
+const st=D.blocks.filter(x=>x.type=='study'),dn=st.filter(x=>x.st=='done').length,tot=st.filter(x=>x.st!='skip').length,mn=S.log.filter(l=>l.d==iso()).reduce((a,l)=>a+l.m,0);
+h+=card(`<div class="rw"><b>تقدّم اليوم</b><span class="mut">${dn} من ${tot} جلسة · ${mn} دقيقة</span></div>${bar(tot?Math.round(100*dn/tot):0)}`)+lateBn();
+if(b)h+=hero(`<span class="tag">${b.type=='study'?'الجلسة التالية':'التالي: استراحة'}</span><h3>${lab(b)}</h3><div class="mut">${fmt(b.s)}–${fmt(b.e)}</div><button class="btn" data-a="go:session">فتح الجلسة</button>`);
+else h+=card(D.blocks.some(x=>x.st=='done')?'<p>اكتملت خطة اليوم 🎉 يمكنك مواصلة الدراسة من صفحة المواد أو إضافة مادة أخرى.</p><button class="btn" data-a="go:subs">المواد</button>':'<p>لا توجد جلسات لليوم بعد. يمكنك اختيار مادة وبدئها من صفحة المواد.</p><button class="btn" data-a="go:subs">المواد</button>');
+return h+ad};
+A.quick=()=>{LS().forEach(x=>gen(x.id));S.recs.forEach(r=>r.later=0);S.day={date:today(),dow:new Date().getDay(),sids:LS().map(x=>x.id),en:'mid',fixed:[],blocks:[],left:[]};S.timer=S.xb=null;replan(now());S.view=cur()?'session':'plan';render()};
+V.home=()=>V.home0()+hint();
+let dip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;if(S.view=='home')render()});
+const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+function hint(){try{if(standalone()||top!==window||!/^https?:/.test(location.protocol)||Date.now()-(+localStorage.getItem('sb_hint')||0)<2592e5)return''}catch(e){return''}return card(`<b>تثبيت Study Buddy</b><p class="mut">${dip?'يمكنك تثبيت التطبيق لفتحه بملء الشاشة بدون شريط المتصفح.':'لفتحه بملء الشاشة: من قائمة المتصفح (⋮) اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق».'}</p><div class="rw">${dip?'<button class="btn s" data-a="inst">تثبيت التطبيق</button>':''}<button class="btn s g" data-a="hh">لاحقاً</button></div>`)}
+A.inst=()=>{if(dip){dip.prompt();dip=null}render()};A.hh=()=>{try{localStorage.setItem('sb_hint',String(Date.now()))}catch(e){}render()};
+const saveReg=()=>{try{localStorage.setItem('sb_reg',JSON.stringify(REG))}catch(e){}};
+A.prof=()=>modal('مساحتي الشخصية','<p class="mut">لكل مساحة مواد ومهام وسجل وإعدادات منفصلة تماماً على هذا المتصفح.</p>'+REG.map(p=>`<div class="rw"><b>${esc(p.name)}${p.id==CP?' ✓':''}</b>${p.id==CP?'':`<span><button class="btn s" data-a="swp:${p.id}">فتح</button><button class="btn s g" data-a="dlp:${p.id}">حذف</button></span>`}</div>`).join('')+'<input id="p_n" placeholder="اسم مساحة جديدة"><button class="btn g" data-a="newp">+ مساحة جديدة</button>');
+A.swp=id=>{save();try{localStorage.setItem('sb_cur',id)}catch(e){}location.reload()};
+A.newp=()=>{const n=v('p_n').trim();if(!n)return toast('أدخل اسم المساحة');const id=uid();REG.push({id,name:n});saveReg();A.swp(id)};
+A.dlp=id=>modal('حذف المساحة؟','<p>ستُحذف كل بياناتها نهائياً.</p>','حذف',()=>{REG=REG.filter(p=>p.id!=id);saveReg();try{localStorage.removeItem(keyOf(id))}catch(e){}A.prof()});
+A.startS=id=>{gen(id);const rs=S.recs.filter(r=>r.sid==id&&r.status!='done');
+const c=cur(),cr=c&&rec(c.rid);if(S.timer&&cr&&cr.sid==id&&c.id==S.timer.bid){S.view='session';return render()}
+guard(()=>{rs.forEach(r=>r.later=0);if(!S.day)S.day={date:today(),dow:new Date().getDay(),sids:[],en:'mid',fixed:[],blocks:[],left:[]};const D=S.day;if(!D.sids.includes(id))D.sids.push(id);D.pin=id;D.ended=false;if(D.blocks.some(b=>b.st=='done'))D.extra=(D.extra||0)+2;S.xb=null;replan(now());A.start()})};
+/* session */
+V.session=()=>{const D=S.day,b=cur(),x=S.xb;if(!D||(!b&&!x))return card('<p>لا توجد جلسة الآن. افتح الرئيسية لترتيب يومك.</p><button class="btn" data-a="go:home">الرئيسية</button>');
+const t=T(),isS=!x&&b.type=='study',r=isS&&rec(b.rid),st=t&&(x||t.bid==b.id),sh=x?x.left:st?t.left:len(b)*60;
+let h=lateBn()+hero(`<span class="tag">${x?'استراحة إضافية':isS?'دراسة':b.type=='long'?'استراحة طويلة':b.type=='break'?'استراحة':''}</span><h3>${x?'خذ وقتك للراحة 🌿':lab(b)}</h3>${isS?`<p>${r.notes?esc(r.notes)+'<br>':''}${tmed(r)?`متابعة من الدقيقة <b>${from(b)}</b>. `:''}${r.dur?`(المدة التقديرية ${r.dur} د — أنجزت ${r.done} د)`:`(أنجزت ${r.done} د)`}. إذا انتهى الوقت ولم تنتهِ المهمة نتابع لاحقاً من حيث وصلت.</p>`:''}<div class="tm" id="tm">${mmss(sh)}</div>`
++(!st?'<button class="btn" data-a="start">ابدأ</button>':t.run?'<button class="btn g" data-a="pause">إيقاف مؤقت</button>':t.left>0?'<button class="btn" data-a="resume">استئناف</button>':'')
++`<div class="rw"><button class="btn s" data-a="fin">${isS?'أنهيت الجلسة':'أنهيت الاستراحة'}</button><button class="btn s g" data-a="reset">إعادة ضبط</button>${!isS?'<button class="btn s g" data-a="ext">+5 د</button>':''}</div>`);
+const Q=[['start','بدأت الدراسة'],['fin','أنهيت الجلسة'],['brk','أريد استراحة'],['ext','أريد تمديد الاستراحة'],['late','تأخرت عن الجدول'],['tired','تعبت ولا أستطيع التركيز'],['sw','أريد تغيير المادة'],['endDay','أريد إنهاء يوم الدراسة'],['go:stats','أريد رؤية إنجازاتي'],['addS','+ إضافة مادة']];
+return h+`<div class="grid">${Q.map(q=>`<button class="chip" data-a="${q[0]}">${q[1]}</button>`).join('')}</div>`};
+/* timer */
+A.start=()=>{if(S.xb){return A.resume()}let b=cur();if(!b)return;
+if(!S.timer||S.timer.bid!=b.id){if(b.type=='study'&&b.s+3<now()){replan(now());b=cur();if(!b)return render();toast('رتّبت الباقي من الوقت الحالي')}S.timer={bid:b.id,left:len(b)*60,run:false}}
+S.timer.run=true;S.timer.end=Date.now()+S.timer.left*1000;S.view='session';render()};
+A.pause=()=>{const t=T();t.left=Math.max(0,Math.ceil((t.end-Date.now())/1000));t.run=false;render()};
+A.resume=()=>{const t=T();if(!t)return A.start();t.run=true;t.end=Date.now()+t.left*1000;S.view='session';render()};
+A.reset=()=>{const t=T(),b=cur();if(!t)return;t.left=(t.x?t.len:len(b))*60;t.run=false;render()};
+A.ext=()=>{const t=T(),b=cur();if(!t||!(t.x||b.type!='study'))return toast('التمديد متاح للاستراحة فقط');t.left+=300;if(t.run)t.end+=3e5;if(t.x)t.len+=5;render()};
+A.brk=()=>modal('كم دقيقة استراحة؟','<div class="grid">'+[5,10,15,20].map(m=>`<button class="chip" data-a="xb:${m}">${m} دقيقة</button>`).join('')+'</div><p class="mut">تُوقَف الجلسة مؤقتاً ويمكنك المتابعة بعدها.</p>');
+A.xb=m=>{A.mx();const t=S.timer;if(t&&t.run)A.pause();S.xb={x:1,len:+m,left:m*60,run:true,end:Date.now()+m*6e4};S.view='session';render()};
+A.endBrk=()=>{if(S.xb)S.xb=null;else{const b=cur();if(b&&b.type!='study')b.st='done';S.timer=null}render()};
+setInterval(()=>{const t=T();$('#clk').textContent=fmt(now());if(!t||!t.run)return;const l=Math.ceil((t.end-Date.now())/1000);
+if(l<=0){t.left=0;t.run=false;lnEnd();try{navigator.vibrate([300,150,300])}catch(e){}render();const st=!S.xb&&cur()&&cur().type=='study';modal('انتهى الوقت ✦',st?'<p>أحسنت! يمكنك الآن تسجيل ما أنجزته في الجلسة.</p>':'<p>انتهت الاستراحة. الخطوة التالية جاهزة.</p>',st?'تسجيل الجلسة':'تمام',()=>{st?A.fin():A.endBrk()})}
+else{t.left=l;const e=$('#tm');if(e)e.textContent=mmss(l)}},500);
+function guard(fn){const t=S.timer,b=cur();if(t&&b&&b.type=='study'&&t.bid==b.id&&b.s!=null&&len(b)*60-t.left>=60){after=fn;A.fin()}else fn()}
+A.fin=()=>{if(S.xb)return A.endBrk();const b=cur();if(!b)return;if(b.type!='study')return A.endBrk();
+const r=rec(b.rid),t=S.timer,pl=len(b),el=t&&t.bid==b.id?(t.left==0?pl:Math.max(0,Math.round((pl*60-t.left)/60))):0;
+modal('انتهت الجلسة',`<label>كم دقيقة استمعت فعلياً؟</label><input type="number" id="f_m" min="0" value="${el}"><label>هل فهمت الجزء؟</label><select id="f_u"><option value="yes">نعم، فهمت</option><option value="part">فهمت جزءاً</option><option value="no">أحتاج إلى مراجعة جزء</option></select><label style="display:flex;align-items:center;margin:10px 0"><input type="checkbox" id="f_c" ${r.dur&&r.done+el>=r.dur?'checked':''}>أنهيت التسجيل كاملاً</label>`,'حفظ',()=>{
+const m=Math.max(0,+v('f_m')||0),u=v('f_u');r.done+=m;if($('#f_c').checked){r.status='done';r.dur=Math.max(r.dur||0,r.done);r.est=0}else if(r.status!='done')r.status=r.done>0?'doing':r.status;r.rev=u=='no'?1:u=='yes'?0:r.rev;
+if(m>0)S.log.push({d:iso(),rid:r.id,sid:r.sid,m,u});b.st=m>0?'done':'skip';b.act=m;S.timer=null;const f=after;after=null;if(f)f();else toast('تم حفظ تقدّمك. أحسنت!');render()})};
+/* reschedule */
+A.clock=()=>modal('كم الساعة الآن؟','<p class="mut">إذا كانت ساعة الجهاز غير مضبوطة، عدّل الوقت هنا.</p>'+inp('c_t',now()),'تثبيت',()=>{const m=parse(v('c_t'));if(m==null)return false;setNow(m);render()});
+A.late=()=>modal('نرتّب من جديد؟','<p>لا تُحسب الجلسات الفائتة منجزة، ويُحتفظ بإنجازك الفعلي فقط. كم الساعة الآن؟</p>'+inp('c_t',now()),'ترتيب الباقي',()=>{const m=parse(v('c_t'));if(m==null)return false;setNow(m);guard(()=>{replan(now());toast('تمام، جدول جديد من '+fmt(now())+'');render()})});
+A.tired=()=>modal('لا بأس','<p>التعب ليس فشلاً. ماذا تفضّل؟</p><button class="btn g" data-a="tr:b">استراحة 10 دقائق</button><button class="btn g" data-a="tr:s">جلسات أقصر (10 دقائق)</button><button class="btn g" data-a="tr:e">يكفي لليوم</button>');
+A.tr=k=>{A.mx();if(k=='b')return A.xb(10);if(k=='e')return A.endDay();guard(()=>{replan(now(),'tired');toast('تم تخفيف الجلسات');render()})};
+A.sw=()=>{if(!S.day)return;modal('أي مادة؟','<div>'+S.day.sids.map(id=>`<button class="chip" data-a="swTo:${id}">${esc(sub(id).name)}</button>`).join('')+'</div><p class="mut">تقدّم المادة الحالية يبقى محفوظاً.</p>')};
+A.swTo=id=>{A.mx();guard(()=>{S.day.pin=id;replan(now());toast('تم تغيير المادة');render()})};
+A.endDay=()=>modal('إنهاء اليوم؟','<p>ما لم يكتمل يُؤجَّل ليوم آخر، وكل ما أنجزته محفوظ.</p>','إنهاء اليوم',()=>{A.mx();guard(()=>{const D=S.day;D.blocks=D.blocks.filter(b=>b.st!='todo');D.ended=true;S.timer=S.xb=null;S.view='stats';render()})});
+/* plan */
+V.plan=()=>{const D=S.day;if(!D)return card('<p>لا يوجد جدول لليوم بعد.</p><button class="btn" data-a="go:setup">ترتيب يومي</button>');
+const all=D.blocks.concat(D.fixed.map(f=>({type:'fixed',s:f.s,e:f.e,l:f.l,st:'x'}))).sort((a,b)=>a.s-b.s);
+return `<h2>جدول اليوم</h2>`+lateBn()+(all.length?all.map(b=>`<div class="r2 ${b.type} ${b.st}" ${b.type=='study'&&b.st=='todo'?'data-a="go:session"':''}><b>${fmt(b.s)}–${fmt(b.e)}</b><span>${lab(b)}</span><i>${b.st=='done'?'✓':b.st=='skip'?'—':''}</i></div>`).join(''):card(queue(D.sids).length?'<p>الوقت متأخر قليلاً. الأفضل الراحة ونتابع غداً 🌙</p>':'<p>لا توجد جلسات لليوم بعد. يمكنك اختيار مادة وبدئها من صفحة المواد.</p><button class="btn" data-a="go:subs">المواد</button>'))
++(D.left.length?`<p class="mut">رُحِّل ${D.left.length} مهمة/مهام إلى الأيام القادمة لعدم كفاية وقت اليوم.</p>`:'')+`<button class="btn g" data-a="late">إعادة ترتيب من الوقت الحالي</button><button class="btn g" data-a="addS">+ إضافة مادة</button><button class="btn g" data-a="go:setup">إعداد يوم جديد</button>`};
+/* setup wizard */
+const initW=()=>{W={st:0,t:now(),ts:0,dow:new Date().getDay(),uni:0,us:540,ue:900,fx:[],sids:[],en:'mid',dr:{}}};
+const dsel=r=>`<select id="d_${r.id}"><option value="">لا أعرف المدة</option><option value="25">أقل من 30 دقيقة</option><option value="40">من 30 إلى 45</option><option value="55">من 45 إلى 60</option><option value="75">أكثر من ساعة</option></select>`;
+V.setup=()=>{if(!W)initW();
+const q=[
+['مرحباً ✦ كم الساعة الآن عندك؟ عدّلها إذا لم تكن مضبوطة.',inp('w_t',W.t)+`<select id="w_d">${DN.map((n,i)=>`<option value="${i}" ${i==W.dow?'selected':''}>${n}</option>`).join('')}</select>`],
+['هل لديك دوام اليوم (جامعة أو مدرسة)؟',`<div class="rw"><button class="btn ${W.uni?'':'g'}" style="flex:1" data-a="uni:1">نعم</button><button class="btn ${W.uni?'g':''}" style="flex:1" data-a="uni:0">لا</button></div>${W.uni?`<label>من</label>${inp('w_us',W.us)}<label>إلى</label>${inp('w_ue',W.ue)}`:''}`],
+['هل هناك التزامات أو مواعيد يجب مراعاتها؟ (غداء، موعد…)',W.fx.map((f,i)=>`<div class="rw"><span>${esc(f.l)} ${fmt(f.s)}–${fmt(f.e)}</span><button class="btn s g" data-a="rmF:${i}">حذف</button></div>`).join('')+`<input id="w_fl" placeholder="الاسم">${inp('w_fs',720)}${inp('w_fe',780)}<button class="btn g" data-a="addF">+ إضافة</button>`],
+['ما المواد التي تريد دراستها اليوم؟ يمكنك البدء بمادة واحدة وإضافة غيرها في أي وقت.',LS().map(s=>`<button class="chip ${W.sids.includes(s.id)?'on':''}" data-a="tg:${s.id}">${esc(s.name)} (${S.recs.filter(r=>r.sid==s.id&&r.status!='done').length})</button>`).join('')+'<button class="btn g" data-a="addS:w">+ مادة جديدة</button>'],
+['كيف طاقتك الآن؟','<div class="grid">'+[['good','جيدة'],['mid','متوسطة'],['tired','متعبة']].map(e=>`<button class="chip ${W.en==e[0]?'on':''}" data-a="en:${e[0]}">${e[1]}</button>`).join('')+'</div>'],
+['هل بدأت الدراسة اليوم؟ إن كان نعم، ماذا أنجزت؟',`<select id="w_r"><option value="">لم أدرس شيئاً بعد</option>${S.recs.filter(r=>W.sids.includes(r.sid)&&r.status!='done').map(r=>`<option value="${r.id}">${rname(r)}</option>`).join('')}</select><input type="number" id="w_m" min="0" placeholder="كم دقيقة؟">`]];
+const l=W.st==q.length-1;
+return `<h2>إعداد اليوم</h2><div class="mut">سؤال ${W.st+1} من ${q.length}</div><div class="bub">${q[W.st][0]}</div>${q[W.st][1]}<button class="btn" data-a="${l?'mk':'nx'}">${l?'إنشاء جدولي':'التالي'}</button><div class="rw"><button class="btn g" data-a="${l?'mk':'sk'}">تخطّي</button>${W.st?'<button class="btn g" data-a="bk">رجوع</button>':''}</div>`};
+function col(){const g=id=>document.getElementById(id);if(W.st==0&&g('w_t')){W.t=parse(v('w_t'));W.ts=1;W.dow=+v('w_d')}
+if(W.st==1&&W.uni&&g('w_us')){W.us=parse(v('w_us'));W.ue=parse(v('w_ue'))}
+if(W.st==5&&g('w_m')&&+v('w_m')>0&&v('w_r')){const r=rec(v('w_r')),m=+v('w_m');r.done+=m;r.status='doing';S.log.push({d:iso(),rid:r.id,sid:r.sid,m,u:'yes'})}}
+A.uni=x=>{W.uni=+x;render()};A.tg=id=>{const i=W.sids.indexOf(id);i<0?W.sids.push(id):W.sids.splice(i,1);render()};A.en=x=>{W.en=x;render()};A.rmF=i=>{W.fx.splice(i,1);render()};
+A.addF=()=>{const s=parse(v('w_fs')),e=parse(v('w_fe'));if(s==null||e==null||e<=s)return toast('تحقق من الوقت');W.fx.push({l:v('w_fl').trim()||'التزام',s,e});render()};
+A.nx=()=>{col();W.st++;render()};A.sk=()=>{W.st++;render()};A.bk=()=>{W.st--;render()};
+A.mk=()=>{col();if(!W.sids.length)W.sids=LS().map(x=>x.id);W.sids.forEach(x=>gen(x));S.recs.forEach(r=>r.later=0);
+if(W.ts)setNow(W.t);const fx=W.fx.slice();if(W.uni)fx.push({l:'جامعة',s:W.us,e:W.ue});fx.sort((a,b)=>a.s-b.s);
+S.day={date:today(),dow:W.dow,sids:W.sids,en:W.en,fixed:fx,blocks:[],left:[]};S.timer=S.xb=null;replan(now());S.view='plan';render()};
+/* subjects */
+const sf=s=>`<input id="s_n" placeholder="اسم المادة" value="${esc(s.name||'')}"><label>موعد الامتحان (اختياري)</label><input type="date" id="s_e" value="${s.exam||''}"><label>الأولوية</label><select id="s_p">${[1,2,3].map(i=>`<option value="${i}" ${(s.prio||2)==i?'selected':''}>${PR[i]}</option>`).join('')}</select>${nt()}${s.id?`<button class="btn g" data-a="delS:${s.id}">حذف المادة</button>`:''}`;
+const getS=s=>{const n=v('s_n').trim();if(!n)return false;Object.assign(s,{name:n,exam:v('s_e'),prio:+v('s_p')})};
+const when=e=>S.day?`<label>متى؟</label><select id="w_when">${e?'<option value="">بدون تغيير</option>':''}<option value="t">اليوم</option><option value="l">لاحقاً</option></select>`:'',gw=()=>{const g=document.getElementById('w_when');return g?g.value:''};
+const nt=()=>`<details><summary>+ إضافة مهمة (اختياري)</summary><div class="bub"><b>ما هي «المهمة»؟</b><br>جزء محدد تريد دراسته من المادة، مثل «الفصل 3» أو «تمارين المجموعة 2» أو «مراجعة المحاضرة 5». تحدّد لها مدة تقديرية اختيارية ويوزّع التطبيق جلسات التركيز عليها. لا حاجة لإضافة مهام: إن تركتها فارغة تُنشأ جلسات «دراسة عامة» للمادة.</div><label>مهمة (اختياري)</label><input id="t_t" placeholder="عنوان المهمة"><input type="number" id="t_d" min="1" placeholder="المدة التقديرية بالدقائق"><label>طريقة الدراسة (اختياري)</label><select id="t_m">${MT.map(m=>`<option value="${m[0]}">${m[1]}</option>`).join('')}</select>${when()}</details>`;
+function newTask(sid){const t=v('t_t').trim();if(!t)return null;const r={id:uid(),sid,num:nextNum(sid),title:t,dur:+v('t_d')||null,done:0,status:'todo',method:v('t_m'),prio:0};S.recs.push(r);return r}
+function gen(sid){if(S.recs.some(r=>r.sid==sid&&r.status!='done'))return;S.recs.push({id:uid(),sid,num:nextNum(sid),title:'دراسة عامة',dur:null,done:0,status:'todo',method:'',prio:0})}
+function place(sid,w,r){const D=S.day;if(!D||!w)return;if(w=='l'){if(r)r.later=1;return}if(!D.sids.includes(sid))D.sids.push(sid);if(r)r.later=0;gen(sid);D.ended=false;D.extra=(D.extra||0)+2;replan(now(),0,1)}
+const nextNum=sid=>Math.max(0,...S.recs.filter(r=>r.sid==sid).map(r=>r.num||0))+1;
+A.addS=w=>modal('مادة جديدة',sf({}),'حفظ',()=>{const s={id:uid()};if(getS(s)===false)return false;S.subs.push(s);if(w=='w'&&W)W.sids.push(s.id);const r=newTask(s.id);place(s.id,gw(),r);render()});
+A.editS=id=>{const s=sub(id);modal('تعديل المادة',sf(s),'حفظ',()=>{if(getS(s)===false)return false;const r=newTask(id);if(r)place(id,gw(),r);render()})};
+A.delS=id=>modal('إزالة المادة؟','<p>ستُزال المادة من قائمتك وخطتك، وتبقى إنجازاتك وسجل دراستك محفوظين في الإحصائيات.</p>','إزالة',()=>{{const c=cur(),cr=c&&rec(c.rid);if(cr&&cr.sid==id)S.timer=null}const used=S.log.some(l=>l.sid==id)||S.recs.some(r=>r.sid==id&&(r.status=='done'||r.done>0));if(used)sub(id).arch=1;else{S.subs=S.subs.filter(x=>x.id!=id);S.recs=S.recs.filter(r=>r.sid!=id)}if(S.day){S.day.sids=S.day.sids.filter(x=>x!=id);replan(now(),0,1)}render()});
+const MT=[['','غير محدد'],['read','قراءة'],['video','فيديو'],['audio','صوت'],['ex','تمارين'],['rev','مراجعة'],['live','محاضرة مباشرة'],['other','أخرى']];
+const rf=r=>`<label>المادة</label><select id="r_sid">${LS().map(s=>`<option value="${s.id}" ${s.id==r.sid?'selected':''}>${esc(s.name)}</option>`).join('')}</select><label>عنوان المهمة</label><input id="r_t" value="${esc(r.title||'')}" placeholder="مثال: الفصل 3 / تمارين المجموعة 2"><label>المدة التقديرية بالدقائق (اختياري)</label><input type="number" id="r_d" min="1" value="${r.dur||''}"><label>الأولوية (اختياري)</label><select id="r_p"><option value="0">—</option>${[1,2,3].map(i=>`<option value="${i}" ${r.prio==i?'selected':''}>${PR[i]}</option>`).join('')}</select><label>الموعد النهائي (اختياري)</label><input type="date" id="r_dl" value="${r.dl||''}"><label>طريقة الدراسة (اختياري)</label><select id="r_mt">${MT.map(m=>`<option value="${m[0]}" ${(r.method||'')==m[0]?'selected':''}>${m[1]}</option>`).join('')}</select><label>ملاحظات (اختياري)</label><input id="r_n" value="${esc(r.notes||'')}">${r.id?`<label>كم دقيقة أنجزت؟</label><input type="number" id="r_m" value="${r.done||0}"><label>الحالة</label><select id="r_s">${Object.keys(STL).map(k=>`<option value="${k}" ${r.status==k?'selected':''}>${STL[k]}</option>`).join('')}</select><button class="btn g" data-a="delR:${r.id}">حذف المهمة</button>`:''}${when(!!r.id)}`;
+const getR=r=>{const t=v('r_t').trim();if(!t){toast('أدخل عنوان المهمة');return false}Object.assign(r,{sid:v('r_sid'),title:t,dur:+v('r_d')||null,est:0,prio:+v('r_p')||0,dl:v('r_dl'),method:v('r_mt'),notes:v('r_n').trim()});if(document.getElementById('r_m')){r.done=Math.max(0,+v('r_m')||0);r.status=v('r_s')}};
+A.addR=sid=>{if(!S.subs.length)return A.addS();modal('مهمة جديدة',rf({sid:sid||S.subs[0].id}),'حفظ',()=>{const r={id:uid(),done:0,status:'todo'};if(getR(r)===false)return false;r.num=nextNum(r.sid);S.recs.push(r);place(r.sid,gw(),r);render()})};
+A.editR=id=>{const r=rec(id);modal(rname(r),rf(r),'حفظ',()=>{if(getR(r)===false)return false;const w=gw();w?place(r.sid,w,r):S.day&&replan(now(),0,1);render()})};
+A.delR=id=>{const c=cur();if(c&&c.rid==id)S.timer=null;S.recs=S.recs.filter(r=>r.id!=id);if(S.day)replan(now(),0,1);A.mx();render()};
+V.subs=()=>`<h2>موادي ومهامي</h2><button class="btn" data-a="addS">+ مادة جديدة</button>`+(LS().map(s=>{const rs=S.recs.filter(r=>r.sid==s.id),d=rs.filter(r=>r.status=='done').length,g=rs.filter(r=>r.status=='doing').length,e=dl(s.exam);
+return card(`<div class="rw"><b>${esc(s.name)}</b><span class="tag">أولوية ${PR[s.prio||2]}</span><button class="x" data-a="delS:${s.id}" aria-label="إزالة المادة">✕</button></div><div class="mut">مهام: ${rs.length} · مكتمل ${d} · قيد الدراسة ${g} · لم أبدأ ${rs.length-d-g}${e!=null?` · الامتحان بعد ${e} يوماً`:''}</div>${bar(pct(rs))}<div class="mut">الإنجاز الفعلي ${pct(rs)}%</div><div>${rs.map(r=>`<button class="chip" data-a="editR:${r.id}">${esc(r.title||('مهمة '+r.num))} · ${r.dur?r.dur+'د':'—'} · ${rp(r)}${r.rev?' ↺':''}${r.later?' ⏳':''}</button>`).join('')}</div><button class="btn s" data-a="startS:${s.id}">بدء المادة</button><button class="btn s g" data-a="editS:${s.id}">تعديل</button>`)}).join('')||card('<p>لا توجد مواد بعد. ابدأ بإضافة أول مادة.</p>'));
+/* stats */
+V.stats=()=>{const sum=a=>a.reduce((x,l)=>x+l.m,0),td=S.log.filter(l=>l.d==iso()),days=[6,5,4,3,2,1,0].map(i=>({i,m:sum(S.log.filter(l=>l.d==iso(-i)))})),mx=Math.max(1,...days.map(d=>d.m)),dn=S.recs.filter(r=>r.status=='done').length;
+return `<h2>إنجازاتي</h2>`+card(`<div class="rw"><span>اليوم</span><b>${sum(td)} دقيقة</b></div><div class="rw"><span>المجموع</span><b>${sum(S.log)} دقيقة</b></div><div class="rw"><span>مهام مكتملة</span><b>${dn} من ${S.recs.length}</b></div>`)
++card(`<b>آخر 7 أيام (دقائق)</b><div class="wk">${days.map(d=>`<div><i style="height:${Math.round(70*d.m/mx)}px"></i>${d.m}</div>`).join('')}</div>`)
++card('<b>حسب المادة</b>'+(S.subs.map(s=>`<div class="rw"><span>${esc(s.name)}${s.arch?' (مؤرشفة)':''}</span><span class="mut">${sum(S.log.filter(l=>l.sid==s.id))} د · ${pct(S.recs.filter(r=>r.sid==s.id))}%</span></div>`).join('')||'<p class="mut">لا توجد بيانات بعد.</p>'))+'<p class="mut">كل دقيقة تُحتسب، حتى لو لم ينتهِ كل شيء اليوم.</p>'};
+/* settings */
+const sel=(k,o,u)=>`<label>${o[0]}</label><select data-set="${k}">${o[1].map(x=>`<option value="${x[0]}" ${S.set[k]==x[0]?'selected':''}>${x[1]}</option>`).join('')}</select>`,rng=(a,u)=>a.map(x=>[x,x+' '+u]);
+V.set=()=>`<h2>الإعدادات</h2>`+card(`<b>المساحة الشخصية: ${esc((REG.find(p=>p.id==CP)||{}).name)}</b><p class="mut">لكل مساحة مواد ومهام وسجل وإعدادات خاصة بها. بياناتك محفوظة على هذا المتصفح فقط، ولا تظهر على أجهزة أو متصفحات أخرى، وهي غير محمية بكلمة سر.</p><button class="btn g" data-a="prof">تبديل أو إدارة المساحات</button>`)+notifCard()+card(sel('study',['مدة الدراسة',rng([10,15,20,25],'دقيقة')])+sel('brk',['الاستراحة القصيرة',rng([5,10],'دقائق')])+sel('long',['الاستراحة الطويلة',rng([15,20,30],'دقيقة')])+sel('every',['استراحة طويلة بعد',[[2,'جلستين'],[3,'3 جلسات'],[4,'4 جلسات']]])+sel('fmt',['نظام الوقت',[[24,'24 ساعة'],[12,'12 ساعة']]])+sel('theme',['المظهر',[['','تلقائي'],['light','فاتح'],['dark','داكن']]])+sel('lang',['اللغة',[['ar','العربية'],['en','English']]])+`<label>آخر وقت للدراسة</label><input type="time" data-set="end" value="${tv(S.set.end)}">`)
++card(`<b>حفظ البيانات</b><p class="mut">${saveOK?'تُحفظ البيانات تلقائياً على هذا المتصفح (وتُفقد إذا مُسحت بيانات المتصفح). صدّر نسخة احتياطية من وقت لآخر.':'⚠️ التخزين المحلي غير متاح هنا، فلن تُحفظ البيانات. استخدم التصدير لنسخ بياناتك.'}</p><textarea id="ex" placeholder="الصق نسخة محفوظة هنا للاستيراد"></textarea><button class="btn s" data-a="exp">تصدير</button><button class="btn s g" data-a="imp">استيراد</button><button class="btn s g" data-a="rst">مسح كل البيانات</button>`)
++card('<b>عن المؤقت</b><p class="mut">يعتمد المؤقت على ساعة الجهاز فيبقى دقيقاً حتى لو غادرت الصفحة، لكن لا يوجد صوت أو إشعار والصفحة مغلقة؛ يظهر التنبيه عند فتحها.</p>');
+A.exp=()=>{const o={...S,timer:null,xb:null};$('#ex').value=JSON.stringify(o);try{$('#ex').select();navigator.clipboard.writeText($('#ex').value)}catch(e){}toast('تم التصدير. انسخ النص واحفظه.')};
+A.imp=()=>{try{const o=JSON.parse(v('ex'));if(!Array.isArray(o.subs))throw 0;S=Object.assign({},DEF,o);S.set={...DEF.set,...S.set};theme();render();toast('تم الاستيراد ✓')}catch(e){toast('النص غير صالح')}};
+A.rst=()=>modal('مسح كل البيانات؟','<p>لا يمكن التراجع إلا بوجود نسخة مصدّرة.</p>','مسح',()=>{S={...DEF,set:{...DEF.set},subs:[],recs:[],log:[]};theme();render()});
+/* galaxy */
+function skyCheck(){const first=!S.sky;if(!S.sky||!Array.isArray(S.sky.stars))S.sky={stars:[]};
+for(const x of S.subs){const rs=S.recs.filter(r=>r.sid==x.id),all=rs.length>0&&rs.every(r=>r.status=='done');
+if(all&&!x.sd){x.sd=1;S.sky.stars.push({id:uid(),sid:x.id,n:x.name,t:Date.now()});if(!first)toast('نجمة جديدة في مجرّتك ✦')}else if(!all&&x.sd)x.sd=0}
+const pc=Math.floor(S.log.reduce((a,l)=>a+l.m,0)/120);if(S.sky.pl===undefined)S.sky.pl=pc;else if(pc>S.sky.pl){S.sky.pl=pc;toast('كوكب جديد في مجرّتك ✦')}}
+const rnd=k=>{const x=Math.sin(k*127.1+311.7)*43758.5453;return x-Math.floor(x)},PC=['#6F9CCB','#F5C451','#A9B8D5','#F8F5ED','#8FB4DC'];
+const gal=()=>{const st=S.sky.stars,tot=S.log.reduce((a,l)=>a+l.m,0),pc=Math.floor(tot/120);return{st,tot,pc,n:st.length+pc}};
+const galCard=()=>{if(!LS().length&&!S.sky.stars.length)return'';const g=gal();return card(`<div class="rw"><b>✦ مجرّتي</b><span class="mut">نجوم: ${g.st.length} · كواكب: ${g.pc}</span><button class="btn s g" data-a="go:sky">فتح</button></div>`)};
+const dayMin=d=>S.log.filter(l=>l.d==d).reduce((a,l)=>a+l.m,0);
+function streak(){let n=0,i=dayMin(iso())>=30?0:1;for(;i<3700&&dayMin(iso(-i))>=30;i++)n++;return n}
+function bestStreak(){const m={};S.log.forEach(l=>{m[l.d]=(m[l.d]||0)+l.m});const ds=Object.keys(m).filter(d=>m[d]>=30).map(d=>{const[y,mo,da]=d.split('-').map(Number);return Math.round(new Date(y,mo-1,da).getTime()/864e5)}).sort((a,b)=>a-b);let b=0,c=0,p=null;for(const x of ds){c=p!==null&&x-p==1?c+1:1;b=Math.max(b,c);p=x}return b}
+function stkCheck(){const t=dayMin(iso());if(!S.stk)S.stk={d:t>=30?iso():''};else if(t>=30&&S.stk.d!=iso()){S.stk.d=iso();toast('نجمة جديدة في سلسلتك ✦')}}
+function strCard(){if(!LS().length&&!S.log.length)return'';const n=streak(),m=dayMin(iso());let w='';for(let i=6;i>=0;i--)w+=`<span class="sg${dayMin(iso(-i))>=30?' on':''}${i==0?' t':''}">✦</span>`;
+return card(`<div class="rw"><b>✦ نجمات الاستمرار</b><span class="mut">أفضل سلسلة: ${bestStreak()}</span></div><div class="stk"><span class="stn">${n}</span><span class="mut">${n==1?'يوم متتالٍ':'أيام متتالية'}</span></div><div>${w}</div>${bar(Math.min(100,Math.round(m/30*100)))}<div class="mut">${m>=30?'تم تحقيق هدف اليوم ✦ (30 دقيقة)':n?`تبقّى ${30-m} د للحفاظ على سلسلتك اليوم`:'30 دقيقة دراسة اليوم تكفي لبدء سلسلة جديدة'}</div>`)}
+{const h0=V.home,s0=V.stats;V.home=()=>h0()+strCard()+galCard();V.stats=()=>s0().replace('<div class="card"><b>آخر 7 أيام (دقائق)</b>','<div class="card" data-a="cal" style="cursor:pointer"><div class="rw"><b>آخر 7 أيام (دقائق)</b><span class="tag">عرض التقويم ‹</span></div>')+strCard()+galCard()}
+function hsh(a,b,c){let x=Math.imul(a|0,374761393)^Math.imul(b|0,668265263)^Math.imul(c|0,2147483629);x=Math.imul(x^x>>>13,1274126177);return((x^x>>>16)>>>0)/4294967296}
+function skyBg(tx,ty,k,W,H){let o='';const C=['#F8F5ED','#F8F5ED','#A9B8D5','#6F9CCB','#F5C451'];
+for(let L=0;L<18;L++){const T=.05*Math.pow(4,L),ts=T*k;if(ts<60)continue;
+const i0=Math.floor(-tx/ts),i1=Math.floor((W-tx)/ts),j0=Math.floor(-ty/ts),j1=Math.floor((H-ty)/ts);if((i1-i0+1)*(j1-j0+1)>400)continue;const fd=Math.min(1,(ts-60)/60+.05);
+for(let i=i0;i<=i1;i++)for(let j=j0;j<=j1;j++){for(let n=0;n<10;n++){const x=tx+(i+hsh(i,j,n*7+L))*ts,y=ty+(j+hsh(i,j,n*7+L+1000))*ts;if(x<-4||x>W+4||y<-4||y>H+4)continue;
+o+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.5+hsh(i,j,n*7+L+2000)*1.3).toFixed(1)}" fill="${C[Math.floor(hsh(i,j,n+L+3000)*5)]}" opacity="${((.25+hsh(i,j,n+L+4000)*.6)*fd).toFixed(2)}"/>`}
+if(T>=1&&hsh(i,j,L+5000)<.08){const x=tx+(i+.5)*ts,y=ty+(j+.5)*ts,rx=Math.min(ts*.12,60);o+=`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${(rx*.4).toFixed(1)}" transform="rotate(${Math.round(hsh(i,j,L+6000)*180)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="#A9B8D5" opacity=".13"/>`}}}
+return o}
+function skyWorld(){const{st,tot,pc,n}=gal(),lv=n>=12?'مجرّتك الخاصة':n>=5?'كوكبة':n>0?'سماء مرصّعة':'سماء هادئة',still=matchMedia('(prefers-reduced-motion: reduce)').matches;let g='',R=110;
+g+='<g fill="none" stroke="#6F9CCB" stroke-width="2" opacity=".18" stroke-linecap="round"><path d="M-420-120c120-110 240 60 380-20s200-120 380 0"/><path d="M-420 160c140 90 260-60 400 0s200 70 340-20"/></g>';
+g+=`<circle r="${26+Math.min(n,40)*1.6}" fill="url(#core)"/>`;
+for(let k=0;k<Math.min(pc,40);k++){const r=52+(k%7)*17+Math.floor(k/7)*5,a=Math.round(rnd(k+3)*360),pr=5+rnd(k)*5,c=PC[k%5];R=Math.max(R,r+14);
+g+=`<circle r="${r}" fill="none" stroke="#A9B8D5" stroke-width=".6" opacity=".25"/><g data-a="sk:p:${k}" transform="rotate(${a})">${still?'':`<animateTransform attributeName="transform" type="rotate" from="${a}" to="${a+360}" dur="${Math.round(40+r*1.1)}s" repeatCount="indefinite"/>`}<circle cx="${r}" r="${pr}" fill="${c}"/>${k%3==0?`<ellipse cx="${r}" rx="${pr*1.9}" ry="${pr*.5}" fill="none" stroke="${c}" stroke-width="1" opacity=".7"/>`:''}<circle cx="${r}" r="14" fill="transparent"/></g>`}
+st.forEach((o,i)=>{const an=.6*i+(i%2)*Math.PI+rnd(i)*.5,rr=Math.min(300,22+Math.sqrt(i+1)*26+rnd(i+9)*14);R=Math.max(R,rr+14);const x=rr*Math.cos(an),y=rr*Math.sin(an)*.95,z=5+rnd(i+5)*4;
+g+=`<g data-a="sk:s:${i}"><path class="tw" style="animation-delay:${(rnd(i+2)*3).toFixed(1)}s" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${z.toFixed(1)})" d="M0-1L.22-.22L1 0L.22.22L0 1L-.22.22L-1 0L-.22-.22Z" fill="#F5C451"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="14" fill="transparent"/></g>`});
+return{g,R,st,tot,pc,n,lv}}
+const skyDef=d=>`<b>${d.lv}</b> <span class="mut">نجوم: ${d.st.length} · كواكب: ${d.pc}</span>${bar(Math.round((d.tot%120)/120*100))}<div class="mut">باقي ${120-d.tot%120} د للكوكب التالي</div><div class="mut">${d.n?'الفضاء لا ينتهي: اسحب للتنقل، واقرص بإصبعين للتكبير والتصغير. المس نجمة أو كوكباً لتعرف قصته.':'سماؤك هادئة بعد. عند إنهاء مادة تظهر نجمة، ومع كل ساعتين دراسة يظهر كوكب.'}</div>`;
+let SZ=null;
+function closeSky(){const e=document.getElementById('sf');if(e&&e.remove)e.remove();SZ=null}
+A.sky=()=>{closeSky();const d=skyWorld(),el=document.createElement('div');el.id='sf';
+el.innerHTML=tl(`<svg role="img" aria-label="مجرّتي"><defs><radialGradient id="core"><stop offset="0" stop-color="#F5C451" stop-opacity=".95"/><stop offset=".35" stop-color="#F5C451" stop-opacity=".35"/><stop offset="1" stop-color="#F5C451" stop-opacity="0"/></radialGradient></defs><g id="bg"></g><g id="vp">${d.g}</g></svg><div class="sft"><button class="sfb" data-a="skyx" aria-label="إغلاق">✕</button><b>✦ مجرّتي</b><span><button class="sfb" data-a="skz:in">+</button> <button class="sfb" data-a="skz:out">−</button> <button class="sfb" data-a="skz:r">⟲</button></span></div><div class="sfi" id="skyinfo">${skyDef(d)}</div>`);
+document.body.appendChild(el);initSky(el,d.R);try{history.pushState({sky:1},'')}catch(e){}};
+A.skyx=()=>{closeSky();try{if(history.state&&history.state.sky)history.back()}catch(e){}};
+addEventListener('popstate',closeSky);
+A.stkinfo=()=>modal('✦ نجمات الاستمرار','<p class="mut">كل يوم دراسة (30 دقيقة على الأقل) يضيف نجمة، وإذا فات يوم كامل تعود السلسلة إلى الصفر.</p>'+strCard(),'');
+A.skz=t=>{if(SZ)t=='in'?SZ.z(1.4):t=='out'?SZ.z(1/1.4):SZ.r()};
+{const s1=V.set;V.set=()=>{let c='';try{if(!standalone()&&top===window&&/^https?:/.test(location.protocol))c=card(`<b>تثبيت كتطبيق</b><p class="mut">لفتح Study Buddy بملء الشاشة بدون شريط المتصفح: افتح الرابط في Chrome، ثم قائمة ⋮ ← «تثبيت التطبيق».</p>${dip?'<button class="btn" data-a="inst">تثبيت التطبيق</button>':''}`)}catch(e){}return s1()+c}}
+{const go0=A.go;A.go=x=>x=='sky'?A.sky():go0(x)}
+function initSky(el,R){const svg=el.querySelector('svg'),vp=el.querySelector('#vp');if(!svg||!svg.addEventListener||!vp||!vp.setAttribute)return;
+const W=()=>el.clientWidth||360,H=()=>el.clientHeight||640,K0=Math.min(W(),H()*.8)/(2*R)*.95;let k=K0,tx=W()/2,ty=H()*.44;
+const bg=el.querySelector('#bg');let raf=0;const dr=()=>{raf=0;if(bg)bg.innerHTML=skyBg(tx,ty,k,W(),H())},ap=()=>{vp.setAttribute('transform',`translate(${tx} ${ty}) scale(${k})`);if(!raf)raf=requestAnimationFrame(dr)},zm=(f,px,py)=>{const nk=Math.max(K0*.0005,Math.min(K0*600,k*f)),r=nk/k;tx=px-(px-tx)*r;ty=py-(py-ty)*r;k=nk;ap()};
+SZ={z:f=>zm(f,W()/2,H()*.44),r:()=>{k=K0;tx=W()/2;ty=H()*.44;ap()}};ap();
+const P=new Map();let mv=0,d0=0,moved=false;
+svg.addEventListener('pointerdown',e=>{P.set(e.pointerId,{x:e.clientX,y:e.clientY});if(P.size==1){mv=0;moved=false}if(P.size==2){const[a,b]=[...P.values()];d0=Math.hypot(a.x-b.x,a.y-b.y)}});
+svg.addEventListener('pointermove',e=>{const p=P.get(e.pointerId);if(!p)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;p.x=e.clientX;p.y=e.clientY;mv+=Math.abs(dx)+Math.abs(dy);if(mv>8)moved=true;
+if(P.size==1){if(moved){tx+=dx;ty+=dy;ap()}}else if(P.size==2){const[a,b]=[...P.values()],d=Math.hypot(a.x-b.x,a.y-b.y),r=svg.getBoundingClientRect();if(d0>0)zm(d/d0,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);d0=d;moved=true}});
+const up=e=>{P.delete(e.pointerId);if(P.size<2)d0=0};svg.addEventListener('pointerup',up);svg.addEventListener('pointercancel',up);svg.addEventListener('pointerleave',up);
+svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();zm(e.deltaY<0?1.15:1/1.15,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+svg.addEventListener('dblclick',e=>{const r=svg.getBoundingClientRect();zm(1.8,e.clientX-r.left,e.clientY-r.top)});
+el.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true)}
+A.sk=(t,i)=>{const e=document.getElementById('skyinfo');if(!e)return;const k=+i;let h;if(t=='s'){const o=S.sky.stars[k];if(!o)return;h=`<b>✦ ${esc(o.n)}</b><br><span class="mut">أنهيت هذه المادة بتاريخ ${new Date(o.t).toLocaleDateString('en-GB')}</span>`}else h=`<b>كوكب ${k+1}</b><br><span class="mut">ظهر عند بلوغ ${(k+1)*2} ساعة دراسة</span>`;e.innerHTML=tl(h)};
+/* calendar */
+let CAL=null;
+const calLoc=()=>S.set.lang=='en'?'en-GB':'ar-u-nu-latn',dkey=(y,m,d)=>y+'-'+(m+1)+'-'+d;
+function calData(){const o={};for(const l of S.log){const e=o[l.d]||(o[l.d]={m:0,n:0,s:{}});e.m+=l.m;e.n++;const x=e.s[l.sid]||(e.s[l.sid]={m:0,t:[]});x.m+=l.m;const r=rec(l.rid);if(r&&r.title&&!x.t.includes(r.title))x.t.push(r.title)}return o}
+function calHTML(){const{y,m}=CAL,D=calData(),first=new Date(y,m,1),nd=new Date(y,m+1,0).getDate(),st=S.set.lang=='en'?0:6,off=(first.getDay()-st+7)%7,td=new Date();let tot=0,days=0,g='',wd='';
+for(let d=1;d<=nd;d++){const e=D[dkey(y,m,d)];if(e&&e.m>0){tot+=e.m;days++}}
+for(let i=0;i<7;i++)wd+=`<b class="mut">${new Date(2023,0,1+((st+i)%7)).toLocaleDateString(calLoc(),{weekday:'narrow'})}</b>`;
+for(let i=0;i<off;i++)g+='<span></span>';
+for(let d=1;d<=nd;d++){const e=D[dkey(y,m,d)],mn=e?e.m:0,fut=new Date(y,m,d)>td,lv=mn>=120?4:mn>=60?3:mn>=30?2:mn>0?1:0,isT=y==td.getFullYear()&&m==td.getMonth()&&d==td.getDate();
+g+=`<button class="cd l${lv}${isT?' t':''}"${fut?' disabled':''} data-a="cald:${dkey(y,m,d)}"><span>${d}</span><small>${mn||''}</small>${mn>=30?'<i>✦</i>':''}</button>`}
+return{title:first.toLocaleDateString(calLoc(),{month:'long',year:'numeric'}),html:`<div class="cgrid">${wd}${g}</div>`,sum:`<div class="rw"><b>${tot} د</b><span class="mut">أيام الدراسة: ${days}</span></div>`}}
+function calRender(){const el=document.getElementById('cl');if(!el||!CAL)return;const c=calHTML(),en=S.set.lang=='en',P=en?'‹':'›',N=en?'›':'‹',PY=en?'«':'»',NY=en?'»':'«';
+el.innerHTML=tl(`<div class="cht"><button class="sfb" data-a="calx" aria-label="إغلاق">✕</button><div class="cn"><button class="sfb" data-a="caly:-1">${PY}</button><button class="sfb" data-a="calm:-1">${P}</button><b>${c.title}</b><button class="sfb" data-a="calm:1">${N}</button><button class="sfb" data-a="caly:1">${NY}</button></div></div>${c.html}<div class="cinfo" id="cinfo">${c.sum}<div class="mut">المس يوماً لعرض تفاصيله.</div></div><button class="btn g" data-a="calt">اليوم</button>`)}
+function closeCal(){const e=document.getElementById('cl');if(e&&e.remove)e.remove();CAL=null}
+A.cal=()=>{closeCal();const n=new Date(),el=document.createElement('div');el.id='cl';CAL={y:n.getFullYear(),m:n.getMonth()};document.body.appendChild(el);calRender();try{history.pushState({cal:1},'')}catch(e){}};
+A.calx=()=>{closeCal();try{if(history.state&&history.state.cal)history.back()}catch(e){}};
+addEventListener('popstate',closeCal);
+A.calm=d=>{if(!CAL)return;CAL.m+=+d;while(CAL.m<0){CAL.m+=12;CAL.y--}while(CAL.m>11){CAL.m-=12;CAL.y++}calRender()};
+A.caly=d=>{if(!CAL)return;CAL.y+=+d;calRender()};
+A.calt=()=>{if(!CAL)return;const n=new Date();CAL={y:n.getFullYear(),m:n.getMonth()};calRender()};
+A.cald=k=>{const el=document.getElementById('cinfo');if(!el)return;const e=calData()[k],[y,mo,d]=k.split('-').map(Number);
+let h=`<b>${new Date(y,mo-1,d).toLocaleDateString(calLoc(),{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b>`;
+if(!e)h+='<div class="mut">لا توجد دراسة مسجّلة في هذا اليوم.</div>';else h+=`<div class="rw"><b>${e.m} د</b><span class="mut">عدد الجلسات: ${e.n}${e.m>=30?' · ✦ نجمة الاستمرار':''}</span></div>`+Object.keys(e.s).map(id=>`<div class="rw"><span>${esc(sub(id).name||'—')}</span><b>${e.s[id].m} د</b></div>${e.s[id].t.length?`<div class="mut">${esc(e.s[id].t.join(' · '))}</div>`:''}`).join('');
+el.innerHTML=tl(h)};
+/* quran player */
+const SUR='الفاتحة,البقرة,آل عمران,النساء,المائدة,الأنعام,الأعراف,الأنفال,التوبة,يونس,هود,يوسف,الرعد,إبراهيم,الحجر,النحل,الإسراء,الكهف,مريم,طه,الأنبياء,الحج,المؤمنون,النور,الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الانفطار,المطففين,الانشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس'.split(',');
+const RC=[['ar.alafasy','مشاري العفاسي',128],['ar.husary','محمود خليل الحصري',128],['ar.minshawi','محمد صديق المنشاوي',128],['ar.sudais','عبد الرحمن السديس',192],['ar.shuraim','سعود الشريم',128],['ar.abdulbasit','عبد الباسط عبد الصمد',192],['ar.hudhaify','علي الحذيفي',128],['ar.ajamy','أحمد العجمي',128],['ar.muhammadayoub','محمد أيوب',128]];
+let QA=null,QR=null,QM=null,QS='',QH=false,QU=null,QAll=null;const QD=new Map(),QP=new Set();
+const qst=()=>S.qr||(S.qr={i:0,rep:'all',rc:'ar.alafasy'}),rcOf=id=>RC.find(x=>x[0]==id)||RC[0],qkey=(n,rc)=>rc+':'+n;
+const qurl=(n,rc)=>{const r=rcOf(rc);return`https://cdn.islamic.network/quran/audio-surah/${r[2]}/${r[0]}/${n}.mp3`};
+const qnorm=t=>String(t).replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[\u064B-\u0652]/g,'');
+const ic=d=>`<svg viewBox="0 0 24 24" width="26" height="26"><path d="${d}" fill="currentColor"/></svg>`,QI={p:ic('M8 5v14l11-7z'),z:ic('M6 5h4v14H6zM14 5h4v14h-4z'),n:ic('M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z'),b:ic('M6 6h2v12H6zM9.5 12l8.5 6V6z')};
+const qplay=()=>!!QA&&!QA.paused&&!QA.ended,fT=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')},offl=()=>navigator.onLine===false;
+/* offline storage (IndexedDB blobs) */
+let QDB={db:null,open(){return this.db||(this.db=new Promise((res,rej)=>{const r=indexedDB.open('sbq',1);r.onupgradeneeded=()=>r.result.createObjectStore('a');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}))},
+async tx(m,f){const d=await this.open();return new Promise((res,rej)=>{const t=d.transaction('a',m),o=f(t.objectStore('a'));t.oncomplete=()=>res(o&&o.result);t.onerror=()=>rej(t.error)})},
+get(k){return this.tx('readonly',x=>x.get(k))},put(k,b){return this.tx('readwrite',x=>x.put(b,k))},del(k){return this.tx('readwrite',x=>x.delete(k))},
+async list(){const d=await this.open();return new Promise((res,rej)=>{const o=[],c=d.transaction('a').objectStore('a').openCursor();c.onsuccess=()=>{const x=c.result;if(x){o.push([x.key,x.value&&x.value.size||0]);x.continue()}else res(o)};c.onerror=()=>rej(c.error)})}};
+function qLoad(){try{QDB.list().then(a=>{QD.clear();a.forEach(([k,z])=>QD.set(k,z));qui()}).catch(()=>{})}catch(e){}}
+const qstat=()=>{let z=0;QD.forEach(v=>z+=v);return`المحمّل: ${QD.size} سورة · ${Math.round(z/1048576)} ميغابايت`};
+async function qDl(n,rc){const k=qkey(n,rc);if(QD.has(k))return true;if(QP.has(k))return false;QP.add(k);qlr();let ok=false;
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+for(const u of[qurl(n,rc),`https://api.islamic.app/v1/audio/surah/${rc}/${n}`]){try{const r=await fetch(u,{mode:'cors'});if(!r.ok)continue;const b=await r.blob();if(!b||b.size<30000)continue;await QDB.put(k,b);QD.set(k,b.size);ok=true;break}catch(e){}}
+QP.delete(k);qlr();return ok}
+async function qSrc(n){const q=qst();try{const b=await QDB.get(qkey(n,q.rc));if(b){if(QU&&URL.revokeObjectURL)URL.revokeObjectURL(QU);QU=URL.createObjectURL(b);return QU}}catch(e){}return qurl(n,q.rc)}
+const qStep=(i,d)=>{const q=qst();if(!i)return 1;for(let k=1;k<=114;k++){const j=((i-1+d*k)%114+114)%114+1;if(!offl()||QD.has(qkey(j,q.rc)))return j}return 0};
+function qa(){if(QA)return QA;QA=new Audio();QA.preload='none';
+QA.addEventListener('ended',()=>{const q=qst();if(q.rep=='one')qPlay(q.i);else if(q.rep=='all'){const j=qStep(q.i,1);j?qPlay(j):qui()}else qui()});
+QA.addEventListener('timeupdate',qprog);QA.addEventListener('play',qui);QA.addEventListener('pause',qui);
+QA.addEventListener('error',()=>{const q=qst();if(!q.i)return;if(offl())return toast('هذه السورة غير محمّلة. حمّلها أولاً للاستماع بدون إنترنت.');if(q.rc!='ar.alafasy'&&!QA.fb&&!/^blob:/.test(QA.src||'')){QA.fb=1;q.rc='ar.alafasy';save();toast('تلاوة هذا القارئ غير متوفرة، تم التحويل إلى العفاسي');qPlay(q.i,1)}else toast('تعذر تشغيل الصوت. تحقق من الاتصال بالإنترنت')});
+try{const m=navigator.mediaSession;m.setActionHandler('play',()=>QA.play());m.setActionHandler('pause',()=>QA.pause());m.setActionHandler('nexttrack',()=>qNext(1));m.setActionHandler('previoustrack',()=>qNext(-1))}catch(e){}
+return QA}
+async function qPlay(n,keep){const q=qst(),a=qa(),k=qkey(n,q.rc);QH=false;if(!keep)a.fb=0;q.i=n;
+if(!QD.has(k)&&offl()){a.pause();save();qui();return toast('هذه السورة غير محمّلة. حمّلها أولاً للاستماع بدون إنترنت.')}
+a.src=QD.has(k)?await qSrc(n):qurl(n,q.rc);const p=a.play();if(p&&p.catch)p.catch(()=>{});save();
+try{navigator.mediaSession.metadata=new MediaMetadata({title:'سورة '+SUR[n-1],artist:rcOf(q.rc)[1],album:'Study Buddy'})}catch(e){}qui()}
+const qNext=d=>{const q=qst(),j=qStep(q.i,d);j?qPlay(j):toast('هذه السورة غير محمّلة. حمّلها أولاً للاستماع بدون إنترنت.')};
+function qlist(){const q=qst(),k=qnorm(QS.trim());return SUR.map((n,i)=>[i+1,n]).filter(([i,n])=>!k||String(i)==k||qnorm(n).includes(k)).map(([i,n])=>{const key=qkey(i,q.rc),dn=QD.has(key);return`<div class="qrow${offl()&&!dn?' qo':''}"><button class="qi${q.i==i?' on':''}" data-a="qp:${i}"><span class="mut">${i}</span><span>سورة ${n}</span></button><button class="qd${dn?' ok':''}" data-a="qd:${i}" aria-label="تنزيل للاستماع بدون إنترنت">${QP.has(key)?'…':dn?'✓':'↓'}</button></div>`}).join('')}
+function qlr(){if(!QR)return;const l=QR.querySelector('#ql'),t=QR.querySelector('#qst'),b=QR.querySelector('#qda');if(l)l.innerHTML=tl(qlist());if(t)t.textContent=tl(qstat());if(b)b.textContent=tl(QAll?`جارٍ التنزيل ${QAll.d}/114 · إيقاف`:'تنزيل الكل للاستماع بدون إنترنت')}
+function qui(){const q=qst(),pl=qplay();
+if(q.i&&!QM){QM=document.createElement('div');QM.id='qm';document.body.appendChild(QM)}
+if(QM){QM.hidden=!q.i||!!QR||QH;if(q.i)QM.innerHTML=tl(`<span class="qmt" data-a="q">♪ سورة ${SUR[q.i-1]}</span><button class="qb" data-a="qt" aria-label="تشغيل / إيقاف">${pl?QI.z:QI.p}</button><button class="qb" data-a="qn:1" aria-label="التالي">${QI.n}</button><button class="qb" data-a="qz" aria-label="إغلاق المشغّل">✕</button>`)}
+try{document.body.classList.toggle('qm',!!q.i&&!QR&&!QH);const b=document.getElementById('qb0');if(b)b.classList.toggle('on',pl)}catch(e){}
+if(QR){const g=id=>QR.querySelector('#'+id),pp=g('qpp'),nw=g('qnow'),rp=g('qrep');if(pp)pp.innerHTML=pl?QI.z:QI.p;if(nw)nw.textContent=tl(q.i?'سورة '+SUR[q.i-1]:'اختيار سورة للتشغيل');if(rp)rp.textContent=tl({all:'تشغيل متتابع',one:'تكرار السورة',off:'إيقاف بعد السورة'}[q.rep]);qlr()}}
+function qprog(){if(!QR||!QA)return;const g=id=>QR.querySelector('#'+id),s=g('qp'),d=QA.duration||0;if(!s)return;if(d&&!isFinite(d))return;if(d)s.value=Math.round(QA.currentTime/d*1000);g('qt1').textContent=fT(QA.currentTime);g('qt2').textContent=fT(d)}
+A.q=()=>{if(QR)return;const q=qst();QR=document.createElement('div');QR.id='qr';
+QR.innerHTML=tl(`<div class="cht"><button class="sfb" data-a="qx" aria-label="إغلاق">✕</button><b class="qtt">القرآن الكريم</b></div><div class="card"><div class="qnow" id="qnow">${q.i?'سورة '+SUR[q.i-1]:'اختيار سورة للتشغيل'}</div><div dir="ltr" class="qpr"><span id="qt1" class="mut">0:00</span><input type="range" id="qp" min="0" max="1000" value="0"><span id="qt2" class="mut">0:00</span></div><div dir="ltr" class="qc"><button class="qb" data-a="qn:-1" aria-label="السابق">${QI.b}</button><button class="qb big" id="qpp" data-a="qt" aria-label="تشغيل / إيقاف">${qplay()?QI.z:QI.p}</button><button class="qb" data-a="qn:1" aria-label="التالي">${QI.n}</button></div><div style="text-align:center"><button class="chip" data-a="qrep" id="qrep">${{all:'تشغيل متتابع',one:'تكرار السورة',off:'إيقاف بعد السورة'}[q.rep]}</button></div><label>القارئ</label><select id="qrs">${RC.map(r=>`<option value="${r[0]}" ${r[0]==q.rc?'selected':''}>${r[1]}</option>`).join('')}</select><div class="mut">حمّل السور بزر ↓ لتسمعها بدون إنترنت.</div><div class="rw"><button class="chip" data-a="qda" id="qda">تنزيل الكل للاستماع بدون إنترنت</button><button class="chip" data-a="qdel">حذف التنزيلات</button></div><div class="mut" id="qst">${qstat()}</div></div><input id="qs" placeholder="بحث عن سورة" value="${esc(QS)}"><div id="ql">${qlist()}</div>`);
+document.body.appendChild(QR);try{history.pushState({q:1},'')}catch(e){}qui();qprog();try{const o=QR.querySelector('.qi.on');if(o&&o.scrollIntoView)o.scrollIntoView({block:'center'})}catch(e){}};
+function qClose(){if(QR&&QR.remove)QR.remove();QR=null;qui()}
+A.qx=()=>{qClose();try{if(history.state&&history.state.q)history.back()}catch(e){}};
+addEventListener('popstate',qClose);addEventListener('online',qlr);addEventListener('offline',qlr);
+A.qp=n=>qPlay(+n);A.qn=d=>qNext(+d);
+A.qz=()=>{QH=true;if(QA)QA.pause();try{navigator.mediaSession.playbackState='none'}catch(e){}qui()};
+A.qt=()=>{const q=qst(),a=qa();QH=false;if(!q.i)return qPlay(1);if(!a.getAttribute('src'))return qPlay(q.i);if(a.paused){const p=a.play();if(p&&p.catch)p.catch(()=>{})}else a.pause();qui()};
+A.qrep=()=>{const q=qst();q.rep={all:'one',one:'off',off:'all'}[q.rep]||'all';save();qui()};
+A.qd=async n=>{const q=qst(),k=qkey(+n,q.rc);if(QD.has(k))return modal('حذف التنزيل؟',`<p>ستُحذف سورة ${SUR[n-1]} من هذا الجهاز.</p>`,'حذف',async()=>{try{await QDB.del(k)}catch(e){}QD.delete(k);qlr()});
+if(offl())return toast('لا يوجد اتصال بالإنترنت للتنزيل.');const ok=await qDl(+n,q.rc);toast(ok?'تم تنزيل السورة للاستماع بدون إنترنت.':'تعذر التنزيل. تحقق من الاتصال وحاول مرة أخرى.')};
+A.qda=()=>{if(QAll){QAll.on=false;return}if(offl())return toast('لا يوجد اتصال بالإنترنت للتنزيل.');
+modal('تنزيل كل السور؟','<p>تنزيل كل السور قد يحتاج مئات الميغابايت أو أكثر من جيجابايت من المساحة. يُفضّل استخدام شبكة Wi‑Fi.</p>','ابدأ التنزيل',()=>{(async()=>{const q=qst(),rc=q.rc;QAll={on:true,d:0};let bad=0;for(let n=1;n<=114&&QAll.on;n++){if(QD.has(qkey(n,rc))){QAll.d++;continue}const ok=await qDl(n,rc);if(ok){QAll.d++;bad=0}else if(++bad>=3){toast('توقف التنزيل. تحقق من الاتصال ثم حاول مجدداً.');break}qlr()}QAll=null;qlr()})()})};
+A.qdel=()=>modal('حذف كل التنزيلات؟','<p>ستُحذف السور المحمّلة من هذا الجهاز.</p>','حذف',async()=>{for(const k of[...QD.keys()]){try{await QDB.del(k)}catch(e){}}QD.clear();qlr()});
+document.addEventListener('input',e=>{const t=e.target;if(t.id=='qs'){QS=t.value;qlr()}else if(t.id=='qp'&&QA&&QA.duration&&isFinite(QA.duration))QA.currentTime=QA.duration*t.value/1000});
+document.addEventListener('change',e=>{if(e.target.id=='qrs'){const q=qst();q.rc=e.target.value;save();if(q.i&&qplay())qPlay(q.i);qlr()}});
+qLoad();
+/* break activities */
+const BGL=[['breath','تنفّس بالنجمة'],['swirl','رسم الدوّامة'],['bub','فقاعات هادئة'],['con','ربط النجوم'],['str','تمدد وحركة']];
+let BG=null,BGN=null;const BGD=new Set(),GM={};
+const bgBreak=()=>{if(S.xb)return'x'+S.xb.end;const b=cur(),t=S.timer;return b&&t&&b.type!='study'&&t.bid==b.id?b.id:null};
+const bgRem=()=>{if(BG.demo)return Math.ceil((BG.demo-Date.now())/1000);const t=T();if(!t||bgBreak()!==BG.k)return 0;return t.run?Math.ceil((t.end-Date.now())/1000):t.left};
+function bgOpen(g,k,demo){if(BG||!GM[g])return;const el=document.createElement('div');el.id='bgm';const nm=(BGL.find(x=>x[0]==g)||[0,g])[1];
+el.innerHTML=tl(`<div class="bgt"><b>${nm}</b><span id="bgc"></span><button class="chip" data-a="bgx">تخطّي</button></div><div id="bgs"></div><div class="bgw" id="bgw"></div>`);document.body.appendChild(el);
+const st=el.querySelector('#bgs');BG={g,k,el,demo:demo?Date.now()+6e4:0,clean:null,iv:setInterval(bgTick,250)};BG.clean=GM[g](st);try{history.pushState({bg:1},'')}catch(e){}bgTick()}
+function bgTick(){if(!BG)return;const r=bgRem(),c=BG.el.querySelector('#bgc'),w=BG.el.querySelector('#bgw');if(r<=0)return bgClose();if(c)c.textContent=mmss(r);if(w)w.textContent=r<=10?tl('تنتهي الاستراحة بعد ')+r+tl(' ثانية'):''}
+function bgClose(nh){if(!BG)return;const b=BG;BG=null;clearInterval(b.iv);try{b.clean&&b.clean()}catch(e){}if(b.el.classList&&b.el.classList.add)b.el.classList.add('out');setTimeout(()=>{if(b.el.remove)b.el.remove()},500);if(!nh)try{if(history.state&&history.state.bg)history.back()}catch(e){}}
+addEventListener('popstate',()=>bgClose(true));
+A.bgx=()=>bgClose();A.bgo=g=>{const k=bgBreak();if(BG||!k||!T()||!GM[g])return;bgOpen(g,k)};A.bgn=()=>{if(BGN)BGN()};
+const BGI={breath:'<path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/>',swirl:'<path d="M12 12c0-1.7 2.5-1.7 2.5 0S12 17 9 14.5 8 6 14 5.5 21 14 17 18.5"/>',bub:'<circle cx="9" cy="14" r="4.5"/><circle cx="17" cy="8" r="3"/><circle cx="18" cy="17" r="1.8"/>',con:'<circle cx="5" cy="17" r="1.7"/><circle cx="11" cy="9" r="1.7"/><circle cx="18" cy="14" r="1.7"/><circle cx="20" cy="5" r="1.7"/><path d="M5 17l6-8 7 5 2-9"/>',str:'<circle cx="12" cy="4.5" r="2"/><path d="M12 7.5V15M12 11L6 6M12 11l6-5M12 15l-3.5 6M12 15l3.5 6"/>'};
+const bgIcons=()=>{if(!bgBreak()||!T())return'';return`<div class="bgi">${BGL.map(([g,n])=>`<button data-a="bgo:${g}" aria-label="${n}" title="${n}"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${BGI[g]}</svg></button>`).join('')}</div><div class="mut" style="text-align:center">نشاط للاستراحة (اختياري). يُغلق تلقائياً عند انتهاء الاستراحة.</div>`};
+{const ss0=V.session;V.session=()=>{const h=ss0(),i=bgIcons();return i?h.replace('<div class="grid">',i+'<div class="grid">'):h}}
+GM.breath=st=>{st.innerHTML='<svg viewBox="-60 -60 120 120" class="bgsv"><path id="bst" d="M0-40L9-9L40 0L9 9L0 40L-9 9L-40 0L-9-9Z" fill="#F5C451" style="transform-box:fill-box;transform-origin:center"/></svg><div class="bgl" id="bgl"></div>';
+const s=st.querySelector('#bst'),l=st.querySelector('#bgl'),ph=[['شهيق',4,1.5],['ثبات',4,1.5],['زفير',6,.7]],rm=matchMedia('(prefers-reduced-motion: reduce)').matches;let i=0,tm;
+const f=()=>{const[p,d,k]=ph[i++%3];l.textContent=tl(p);s.style.transition=rm?'none':`transform ${d}s ease-in-out`;s.style.transform=`scale(${k})`;tm=setTimeout(f,d*1000)};f();return()=>clearTimeout(tm)};
+GM.swirl=st=>{const c=document.createElement('canvas');c.className='bgcv';st.appendChild(c);const x=c.getContext('2d'),pal=['#6F9CCB','#A9B8D5','#F5C451','#F8F5ED'];let w=0,h=0,raf=0,dn=false,lx=0,ly=0,ci=0;
+const rs=()=>{w=c.width=st.clientWidth||360;h=c.height=st.clientHeight||600;x.fillStyle='#0f1a36';x.fillRect(0,0,w,h)};rs();
+const pt=e=>{const r=c.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+c.addEventListener('pointerdown',e=>{dn=true;[lx,ly]=pt(e)});c.addEventListener('pointerup',()=>dn=false);c.addEventListener('pointercancel',()=>dn=false);c.addEventListener('pointerleave',()=>dn=false);
+c.addEventListener('pointermove',e=>{if(!dn)return;const[px,py]=pt(e);ci=(ci+.03)%4;x.strokeStyle=pal[Math.floor(ci)];x.lineWidth=4;x.lineCap='round';x.shadowColor=x.strokeStyle;x.shadowBlur=10;x.beginPath();x.moveTo(lx,ly);x.lineTo(px,py);x.stroke();lx=px;ly=py});
+const fd=()=>{x.shadowBlur=0;x.fillStyle='rgba(15,26,54,.03)';x.fillRect(0,0,w,h);raf=requestAnimationFrame(fd)};fd();return()=>cancelAnimationFrame(raf)};
+GM.bub=st=>{const box=document.createElement('div');box.className='bgbx';st.appendChild(box);
+const add=()=>{if(box.children.length>7)return;const b=document.createElement('button'),z=44+Math.random()*50;b.className='bbl';b.style.cssText=`width:${z}px;height:${z}px;left:${5+Math.random()*80}%;animation-duration:${11+Math.random()*6}s`;b.setAttribute('aria-label',tl('فقاعة'));b.addEventListener('click',()=>{b.classList.add('pop');setTimeout(()=>b.remove(),350)});b.addEventListener('animationend',()=>b.remove());box.appendChild(b)};
+add();const iv=setInterval(add,1400);return()=>clearInterval(iv)};
+const CON=[[[12,60],[28,52],[44,56],[58,46],[62,26],[82,24],[84,44]],[[10,30],[28,66],[48,36],[66,68],[86,30]],[[50,12],[62,40],[90,42],[68,60],[76,88],[50,70],[24,88],[32,60],[10,42],[38,40]]];
+GM.con=st=>{let sh=Math.floor(Math.random()*CON.length),k=0,tm;st.innerHTML='<svg viewBox="0 0 100 100" class="bgsv" id="cs"></svg><div class="bgl" id="bgl"></div>';const sv=st.querySelector('#cs'),l=st.querySelector('#bgl');
+const draw=()=>{const P=CON[sh];let h='';for(let i=1;i<k;i++)h+=`<line x1="${P[i-1][0]}" y1="${P[i-1][1]}" x2="${P[i][0]}" y2="${P[i][1]}" stroke="#F5C451" stroke-width=".8" stroke-linecap="round"/>`;
+P.forEach((p,i)=>{const nx=i==k;h+=`<g data-i="${i}"><circle cx="${p[0]}" cy="${p[1]}" r="${nx?3.2:2.4}" fill="${i<k?'#F5C451':'#A9B8D5'}"${nx?' class="bgp"':''}/><text x="${p[0]}" y="${p[1]-4.5}" font-size="4" text-anchor="middle" fill="#F8F5ED" opacity=".8">${i+1}</text><circle cx="${p[0]}" cy="${p[1]}" r="7" fill="transparent"/></g>`});sv.innerHTML=h;l.textContent=k>=P.length?tl('أحسنت ✦ كوكبة جديدة بعد قليل'):''};
+sv.addEventListener('click',e=>{const g=e.target.closest&&e.target.closest('[data-i]');if(!g)return;if(+g.dataset.i==k&&k<CON[sh].length){k++;draw();if(k>=CON[sh].length)tm=setTimeout(()=>{sh=(sh+1)%CON.length;k=0;draw()},2800)}});draw();return()=>clearTimeout(tm)};
+const STR=['تحريك الكتفين بدوائر بطيئة','مدّ الذراعين للأعلى مع شهيق عميق','تحريك الرقبة يميناً ويساراً ببطء','الوقوف والانحناء للأمام بلطف','فتح القبضتين وإغلاقهما 10 مرات','رشفة ماء','النظر إلى شيء بعيد ثم قريب لراحة العينين','المشي بضع خطوات'];
+GM.str=st=>{let i=Math.floor(Math.random()*STR.length),t0=Date.now();st.innerHTML='<div class="bgcard"><div class="bgl big" id="sc"></div><div class="bar"><i id="sb" style="width:0"></i></div><button class="chip" data-a="bgn">التالي</button><div class="mut">بدون إجهاد. يُنصح بتجنّب أي حركة تسبب ألماً.</div></div>';const c=st.querySelector('#sc'),b=st.querySelector('#sb');
+const show=()=>{c.textContent=tl(STR[i%STR.length]);t0=Date.now();b.style.width='0'};show();
+const iv=setInterval(()=>{const p=(Date.now()-t0)/3e4;b.style.width=Math.min(100,p*100)+'%';if(p>=1){i++;show()}},300);BGN=()=>{i++;show()};return()=>{clearInterval(iv);BGN=null}};
+/* notifications */
+const NTU='https://ntfy.sh/';let NT={key:'',sid:'',end:0};
+const ntOn=()=>!!(S.set.nt&&S.set.ntt),ntDel=(sid)=>{try{fetch(NTU+S.set.ntt+'/'+encodeURIComponent(sid),{method:'DELETE'}).catch(()=>{})}catch(e){}};
+async function ntPub(o){const r=await fetch(NTU,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:S.set.ntt,priority:4,tags:['bell'],...o})});if(!r.ok)throw new Error(r.status);return r.json()}
+function ntCancel(){const p=NT;NT={key:'',sid:'',end:0};if(p.sid&&Date.now()<p.end-2500)ntDel(p.sid)}
+function ntSync(){if(!ntOn()){if(NT.key)ntCancel();return}const t=T();let key='';if(t&&t.run)key=(S.xb?'b':cur()&&cur().type=='study'?'s':'b')+Math.round(t.end/1000);
+if(key===NT.key)return;if(NT.key)ntCancel();if(!key)return;const end=t.end,secs=Math.round((end-Date.now())/1000);if(secs<10)return;NT.key=key;
+ntPub({title:'Study Buddy ✦',message:tl(key[0]=='s'?'انتهت جلسة الدراسة. حان وقت تسجيل ما أنجزته والاستراحة.':'انتهت الاستراحة. حان وقت العودة.'),delay:secs+'s'}).then(r=>{const sid=r.sequence_id||r.id;if(NT.key===key){NT.sid=sid;NT.end=end}else if(Date.now()<end-2500)ntDel(sid)}).catch(()=>{if(NT.key===key)NT.key=''})}
+function lnEnd(){try{if(!S.set.nl||ntOn()||typeof Notification=='undefined'||Notification.permission!='granted'||document.visibilityState=='visible')return;
+const study=!S.xb&&cur()&&cur().type=='study',title='Study Buddy ✦',body=tl(study?'انتهت جلسة الدراسة. حان وقت تسجيل ما أنجزته والاستراحة.':'انتهت الاستراحة. حان وقت العودة.'),o={body,icon:'icon-192.png',vibrate:[200,100,200],tag:'sb-timer',renotify:true};
+navigator.serviceWorker.getRegistration().then(r=>r?r.showNotification(title,o):new Notification(title,o)).catch(()=>{})}catch(e){}}
+const notifCard=()=>{const gr=typeof Notification!='undefined'&&Notification.permission=='granted',ln=!!S.set.nl&&gr;return card(`<b>إشعارات الجوال</b><p class="mut">للتنبيه عند نهاية الجلسة ونهاية الاستراحة.</p><button class="chip${ln?' on':''}" data-a="ntl">إشعار المتصفح: ${ln?'مفعّل':'معطّل'}</button><p class="mut">يعمل غالباً ما دام التطبيق مفتوحاً أو في الخلفية، لكن أندرويد قد يوقفه عند إغلاق التطبيق.</p><button class="chip${ntOn()?' on':''}" data-a="ntn">إشعار خارج التطبيق (ntfy): ${ntOn()?'مفعّل':'معطّل'}</button>${ntOn()?`<div class="mut">1) ثبّت تطبيق ntfy (من Google Play أو F-Droid).<br>2) اشترك في القناة التالية:</div><div class="tpc" dir="ltr">${esc(S.set.ntt)}</div><div class="rw"><button class="btn s g" data-a="ntc">نسخ</button><a class="btn s g" href="ntfy://ntfy.sh/${esc(S.set.ntt)}">فتح في ntfy</a><button class="btn s" data-a="ntt">اختبار الإشعار</button></div><p class="mut">اسم القناة سرّي، والرسائل نص عام بدون بياناتك. تُرسَل عبر خدمة ntfy.sh (طرف ثالث).</p>`:''}`)};
+A.ntl=()=>{if(S.set.nl){S.set.nl=0;save();return render()}if(typeof Notification=='undefined')return toast('هذا المتصفح لا يدعم الإشعارات');Notification.requestPermission().then(p=>{S.set.nl=p=='granted'?1:0;if(p!='granted')toast('لم يُسمح بالإشعارات');save();render()})};
+A.ntn=()=>{if(S.set.nt){S.set.nt=0;ntSync()}else{if(!S.set.ntt){const r=new Uint8Array(12);crypto.getRandomValues(r);S.set.ntt='sbd-'+[...r].map(x=>x.toString(36).padStart(2,'0')).join('')}S.set.nt=1}save();render()};
+A.ntc=()=>{try{navigator.clipboard.writeText(S.set.ntt);toast('تم نسخ اسم القناة')}catch(e){toast(S.set.ntt)}};
+A.ntt=()=>{ntPub({title:'Study Buddy ✦',message:tl('إشعار تجريبي: إذا ظهر هذا فالتنبيهات تعمل.')}).then(()=>toast('أُرسل الإشعار التجريبي')).catch(()=>toast('تعذر الإرسال. تحقق من الاتصال.'))};
+/* init */
+S.recs.forEach(r=>{if(r.title===undefined){r.title='تسجيل '+r.num;r.method='audio'}});
+if(S.day&&S.day.date!=today())S.day=null;
+if(S.timer&&!(S.day&&S.day.blocks.some(b=>b.id==S.timer.bid)))S.timer=null;
+if(!S.day){S.timer=S.xb=null}
+theme();if(S.view=='setup')initW();render();
+</script><script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script></body></html>
