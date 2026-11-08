@@ -113,12 +113,17 @@ let rem=remain(r),k=0;const mx=rem==null?3:Math.ceil(rem/L);
 while(k<mx){if(c>=cap){stop=true;break}
 const l=rem==null?L:Math.min(L,rem);let u=t,bk=null;if(last){bk=c%s.every==0?['long',s.long]:['break',s.brk];u=t+bk[1]}
 let p=u;for(let i=0;i<9;i++){const f=fixed.find(f=>f.s<p+l&&f.e>p);if(!f)break;p=f.e}
-if(p+l>s.end){stop=true;break}
+if(p+l>endOf()){stop=true;break}
 if(bk&&p==u)out.push({id:uid(),type:bk[0],s:t,e:u,st:'todo'});
 out.push({id:uid(),type:'study',s:p,e:p+l,rid:r.id,st:'todo'});t=p+l;last=1;c++;k++;if(rem!=null)rem-=l}
 if(stop)left.push(r.id)}
 return{out,left}}
-function replan(t,en,keep){const D=S.day;if(!D)return;if(en)D.en=en;const c=keep&&S.timer&&cur()&&cur().id==S.timer.bid?cur():null,k=D.blocks.filter(b=>b.st!='todo'||b===c),n=k.filter(b=>b.type=='study'&&(b.st=='done'||b===c)).length,r=build(c?Math.max(t,c.e):t,D.fixed,D.sids,D.en,n,c&&c.type=='study');D.blocks=k.concat(r.out).sort((a,b)=>a.s-b.s);D.left=r.left;if(!c)S.timer=null}
+function replan(t,en,keep,brk){const D=S.day;if(!D)return;if(en)D.en=en;const c=keep&&S.timer&&cur()&&cur().id==S.timer.bid?cur():null,k=D.blocks.filter(b=>b.st!='todo'||b===c),n=k.filter(b=>b.type=='study'&&(b.st=='done'||b===c)).length,r=build(c?Math.max(t,c.e):t,D.fixed,D.sids,D.en,n,(c&&c.type=='study')||brk);D.blocks=k.concat(r.out).sort((a,b)=>a.s-b.s);D.left=r.left;if(!c)S.timer=null}
+const endOf=()=>Math.max(S.set.end,(S.day&&S.day.endX)||0);
+/* when the user explicitly asks to study, allow it even after the usual last-study time */
+function stretch(){const D=S.day;if(!D)return;const m=now(),L=S.set.study;if(m+L>endOf())D.endX=Math.min(1439,m+3*(L+S.set.brk))}
+/* a stale day (app left open past midnight) must not block the new day */
+function dayRoll(){if(S.day&&S.day.date!=today()&&!(S.timer&&S.timer.run)&&!(S.xb&&S.xb.run)){S.day=null;S.timer=S.xb=null;return true}return false}
 const late=b=>b&&b.s+5<=now()&&!(S.timer&&S.timer.bid==b.id)&&!S.xb;
 const lateBn=()=>late(cur())?`<div class="card"><p>الجدول صار قديماً قليلاً، وهذا طبيعي تماماً. يمكنك تثبيت الوقت وسأعيد ترتيب الباقي.</p><button class="btn g" data-a="late">إعادة ترتيب الباقي من الآن</button></div>`:'';
 const rp=r=>r.status=='done'?'✓':r.dur?Math.round(100*Math.min(r.done/r.dur,1))+'%':r.done?r.done+'د':'—';
@@ -127,7 +132,7 @@ function toast(m){const t=$('#toast');t.textContent=tl(m);t.hidden=false;clearTi
 function modal(t,b,ok,fn){M=fn;$('#md').innerHTML=`<div class="box"><h3>${t}</h3>${b}${ok?`<button class="btn" data-a="mok">${ok}</button>`:''}<button class="btn g" data-a="mx">إغلاق</button></div>`;$('#md').innerHTML=tl($('#md').innerHTML);$('#md').hidden=false}
 const A={};
 A.mx=()=>{$('#md').hidden=true;M=null;after=null};
-A.mok=()=>{const f=M;if(f&&f()===false)return;if(M===f)A.mx()};
+A.mok=()=>{const f=M;let r;try{r=f&&f()}catch(e){console.error(e);toast('تعذّر الحفظ، حاول مرة أخرى');return}if(r===false)return;if(M===f)A.mx()};
 document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const[a,...p]=t.dataset.a.split(':');if(e.target.id=='md')return;A[a]&&A[a](...p)});
 document.addEventListener('change',e=>{const k=e.target.dataset.set;if(!k)return;const x=e.target.value;S.set[k]=k=='theme'||k=='lang'||k=='bg'?x:k=='end'?(parse(x)||1350):+x;theme();render()});
 const TRS=`نشاط للاستراحة (اختياري). يُغلق تلقائياً عند انتهاء الاستراحة.¦A break activity (optional). It closes automatically when the break ends.
@@ -347,6 +352,21 @@ placeholder="المدة التقديرية بالدقائق"¦placeholder="Estim
 انتهى الوقت ✦¦Time’s up ✦
 أحسنت! يمكنك الآن تسجيل ما أنجزته في الجلسة.¦Well done! Log what you completed in this session.
 تسجيل الجلسة¦Log session
+لم أنتهِ بعد: زد الوقت وتابع¦Not done yet: add time and keep going
+لم أنتهِ بعد: تابع¦Not done yet: keep going
+تمديد تلقائي ✓ +5 د¦Auto-extend on ✓ +5 min
+إذا انتهى الوقت ولم تنتهِ المهمة اضغط «لم أنتهِ بعد» لتمديد الوقت.¦If time runs out before you finish, press “Not done yet” to add time.
+التمديد التلقائي مفعّل: تستمر الجلسة وتُمدَّد في الجدول 5 دقائق كلما انتهى الوقت، حتى تضغط «أنهيت الجلسة».¦Auto-extend is on: the session keeps going and the schedule grows by 5 minutes each time it runs out, until you press “Finished session”.
+زِيد وقت الجلسة 5 دقائق تلقائياً¦Session extended by 5 minutes automatically
+تم تمديد الجلسة 5 دقائق. تستمر حتى تضغط «أنهيت الجلسة».¦Session extended by 5 minutes. It continues until you press “Finished session”.
+ابدأ الجلسة أولاً¦Start the session first
+أنهيت هذه المهمة كاملة ✦ (تحصل على نجمة عند إتمام كل مهام المادة)¦I finished this task completely ✦ (you earn a star when all the subject’s tasks are done)
+لا يتسع وقت اليوم لجلسة أخرى. عدّل «آخر وقت للدراسة» في الإعدادات أو جرّب غداً.¦There isn’t room for another session today. Change “Latest study time” in Settings or try tomorrow.
+تعذّر الحفظ، حاول مرة أخرى¦Couldn’t save, please try again
+أدخل اسم المادة¦Enter the subject name
+تمت إضافة المادة ✓¦Subject added ✓
+ادرس الآن رغم تأخر الوقت¦Study now anyway
+الوقت متأخر قليلاً. الأفضل الراحة ونتابع غداً 🌙¦It’s a bit late. Better to rest and continue tomorrow 🌙
 انتهت الاستراحة. الخطوة التالية جاهزة.¦The break is over. The next step is ready.
 انتهت الجلسة¦Session complete
 كم دقيقة درست فعلياً؟¦How many minutes did you actually listen?
@@ -543,7 +563,7 @@ function tl(h){if(S.set.lang!='en')return h;for(const[a,e] of TR)h=h.split(a).jo
 const NAV0=$('nav').innerHTML;
 function theme(){const r=document.documentElement,en=S.set.lang=='en';S.set.theme?r.setAttribute('data-theme',S.set.theme):r.removeAttribute('data-theme')+`<p class="mut" style="text-align:center">الإصدار: 16 ✦ مجرّتي</p>`;r.lang=en?'en':'ar';r.dir=en?'ltr':'rtl';$('nav').innerHTML=tl(NAV0);{const m=document.querySelector('meta[name=theme-color]'),dk=S.set.theme=='dark'||(!S.set.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=dk?'#17264B':'#F8F5ED'}document.title=en?'Study Buddy':'Study Buddy — رفيق الدراسة'}
 const V={};
-function render(){skyCheck();stkCheck();save();ntSync();$('#app').innerHTML=tl((V[S.view]||V.home)());$('#clk').textContent=fmt(now());{const b=$('#stk');$('#stkn').textContent=streak();b.classList.toggle('on',dayMin(iso())>=30);if(b.setAttribute)b.setAttribute('aria-label',tl('سلسلة الدراسة'));const q0=$('#qb0');if(q0&&q0.setAttribute)q0.setAttribute('aria-label',tl('القرآن الكريم'))}document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n.dataset.a=='go:'+S.view))}
+function render(){dayRoll();skyCheck();stkCheck();save();ntSync();$('#app').innerHTML=tl((V[S.view]||V.home)());$('#clk').textContent=fmt(now());{const b=$('#stk');$('#stkn').textContent=streak();b.classList.toggle('on',dayMin(iso())>=30);if(b.setAttribute)b.setAttribute('aria-label',tl('سلسلة الدراسة'));const q0=$('#qb0');if(q0&&q0.setAttribute)q0.setAttribute('aria-label',tl('القرآن الكريم'))}document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n.dataset.a=='go:'+S.view))}
 A.go=x=>{S.view=x;if(x=='setup')initW();render();scrollTo(0,0)};
 /* home */
 V.home0=()=>{const D=S.day,b=cur(),ad=LS().length?'<button class="btn g" data-a="addS">+ إضافة مادة</button>':'';
@@ -555,7 +575,7 @@ h+=card(`<div class="rw"><b>تقدّم اليوم</b><span class="mut">${dn} م�
 if(b)h+=hero(`<span class="tag">${b.type=='study'?'الجلسة التالية':'التالي: استراحة'}</span><h3>${lab(b)}</h3><div class="mut">${fmt(b.s)}–${fmt(b.e)}</div><button class="btn" data-a="go:session">فتح الجلسة</button>`);
 else h+=card(D.blocks.some(x=>x.st=='done')?'<p>اكتملت خطة اليوم 🎉 يمكنك مواصلة الدراسة من صفحة المواد أو إضافة مادة أخرى.</p><button class="btn" data-a="go:subs">المواد</button>':'<p>لا توجد جلسات لليوم بعد. يمكنك اختيار مادة وبدئها من صفحة المواد.</p><button class="btn" data-a="go:subs">المواد</button>');
 return h+ad};
-A.quick=()=>{LS().forEach(x=>gen(x.id));S.recs.forEach(r=>r.later=0);S.day={date:today(),dow:new Date().getDay(),sids:LS().map(x=>x.id),en:'mid',fixed:[],blocks:[],left:[]};S.timer=S.xb=null;replan(now());S.view=cur()?'session':'plan';render()};
+A.quick=()=>{LS().forEach(x=>gen(x.id));S.recs.forEach(r=>r.later=0);S.day={date:today(),dow:new Date().getDay(),sids:LS().map(x=>x.id),en:'mid',fixed:[],blocks:[],left:[]};S.timer=S.xb=null;stretch();replan(now());S.view=cur()?'session':'plan';if(!cur())toast('لا يتسع وقت اليوم لجلسة أخرى. عدّل «آخر وقت للدراسة» في الإعدادات أو جرّب غداً.');render()};
 V.home=()=>V.home0()+hint();
 let dip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;if(S.view=='home')render()});
 const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
@@ -568,17 +588,17 @@ A.newp=()=>{const n=v('p_n').trim();if(!n)return toast('أدخل اسم المس
 A.dlp=id=>modal('حذف المساحة؟','<p>ستُحذف كل بياناتها نهائياً.</p>','حذف',()=>{REG=REG.filter(p=>p.id!=id);saveReg();try{localStorage.removeItem(keyOf(id))}catch(e){}A.prof()});
 A.startS=id=>{gen(id);const rs=S.recs.filter(r=>r.sid==id&&r.status!='done');
 const c=cur(),cr=c&&rec(c.rid);if(S.timer&&cr&&cr.sid==id&&c.id==S.timer.bid){S.view='session';return render()}
-guard(()=>{rs.forEach(r=>r.later=0);if(!S.day)S.day={date:today(),dow:new Date().getDay(),sids:[],en:'mid',fixed:[],blocks:[],left:[]};const D=S.day;if(!D.sids.includes(id))D.sids.push(id);D.pin=id;D.ended=false;if(D.blocks.some(b=>b.st=='done'))D.extra=(D.extra||0)+2;S.xb=null;replan(now());A.start()})};
+guard(()=>{rs.forEach(r=>r.later=0);if(!S.day)S.day={date:today(),dow:new Date().getDay(),sids:[],en:'mid',fixed:[],blocks:[],left:[]};const D=S.day;if(!D.sids.includes(id))D.sids.push(id);D.pin=id;D.ended=false;if(D.blocks.some(b=>b.st=='done'))D.extra=(D.extra||0)+2;S.xb=null;stretch();replan(now());A.start()})};
 /* session */
 V.session=()=>{const D=S.day,b=cur(),x=S.xb;if(!D||(!b&&!x))return card('<p>لا توجد جلسة الآن. افتح الرئيسية لترتيب يومك.</p><button class="btn" data-a="go:home">الرئيسية</button>');
 const t=T(),isS=!x&&b.type=='study',r=isS&&rec(b.rid),st=t&&(x||t.bid==b.id),sh=x?x.left:st?t.left:len(b)*60;
-let h=lateBn()+hero(`<span class="tag">${x?'استراحة إضافية':isS?'دراسة':b.type=='long'?'استراحة طويلة':b.type=='break'?'استراحة':''}</span><h3>${x?'خذ وقتك للراحة 🌿':lab(b)}</h3>${isS?`<p>${r.notes?esc(r.notes)+'<br>':''}${tmed(r)?`متابعة من الدقيقة <b>${from(b)}</b>. `:''}${r.dur?`(المدة التقديرية ${r.dur} د — أنجزت ${r.done} د)`:`(أنجزت ${r.done} د)`}. إذا انتهى الوقت ولم تنتهِ المهمة نتابع لاحقاً من حيث وصلت.</p>`:''}<div class="tm" id="tm">${mmss(sh)}</div>`
+let h=lateBn()+hero(`<span class="tag">${x?'استراحة إضافية':isS?'دراسة':b.type=='long'?'استراحة طويلة':b.type=='break'?'استراحة':''}</span><h3>${x?'خذ وقتك للراحة 🌿':lab(b)}</h3>${isS?`<p>${r.notes?esc(r.notes)+'<br>':''}${tmed(r)?`متابعة من الدقيقة <b>${from(b)}</b>. `:''}${r.dur?`(المدة التقديرية ${r.dur} د — أنجزت ${r.done} د)`:`(أنجزت ${r.done} د)`}. إذا انتهى الوقت ولم تنتهِ المهمة اضغط «لم أنتهِ بعد» لتمديد الوقت.${t&&t.auto&&st?'<br><b>التمديد التلقائي مفعّل: تستمر الجلسة وتُمدَّد في الجدول 5 دقائق كلما انتهى الوقت، حتى تضغط «أنهيت الجلسة».</b>':''}</p>`:''}<div class="tm" id="tm">${mmss(sh)}</div>`
 +(!st?'<button class="btn" data-a="start">ابدأ</button>':t.run?'<button class="btn g" data-a="pause">إيقاف مؤقت</button>':t.left>0?'<button class="btn" data-a="resume">استئناف</button>':'')
-+`<div class="rw"><button class="btn s" data-a="fin">${isS?'أنهيت الجلسة':'أنهيت الاستراحة'}</button><button class="btn s g" data-a="reset">إعادة ضبط</button>${!isS?'<button class="btn s g" data-a="ext">+5 د</button>':''}</div>`);
++`<div class="rw"><button class="btn s" data-a="fin">${isS?'أنهيت الجلسة':'أنهيت الاستراحة'}</button><button class="btn s g" data-a="reset">إعادة ضبط</button>${isS&&st?`<button class="btn s" data-a="more">${t.auto?'تمديد تلقائي ✓ +5 د':'لم أنتهِ بعد: تابع'}</button>`:''}${!isS?'<button class="btn s g" data-a="ext">+5 د</button>':''}</div>`);
 const Q=[['start','بدأت الدراسة'],['fin','أنهيت الجلسة'],['brk','أريد استراحة'],['ext','أريد تمديد الاستراحة'],['late','تأخرت عن الجدول'],['tired','تعبت ولا أستطيع التركيز'],['sw','أريد تغيير المادة'],['endDay','أريد إنهاء يوم الدراسة'],['go:stats','أريد رؤية إنجازاتي'],['addS','+ إضافة مادة']];
 return h+`<div class="grid">${Q.map(q=>`<button class="chip" data-a="${q[0]}">${q[1]}</button>`).join('')}</div>`};
 /* timer */
-A.start=()=>{if(S.xb){return A.resume()}let b=cur();if(!b)return;
+A.start=()=>{if(S.xb){return A.resume()}let b=cur();if(!b){toast('لا يتسع وقت اليوم لجلسة أخرى. عدّل «آخر وقت للدراسة» في الإعدادات أو جرّب غداً.');return render()}
 if(!S.timer||S.timer.bid!=b.id){if(b.type=='study'&&b.s+3<now()){replan(now());b=cur();if(!b)return render();toast('رتّبت الباقي من الوقت الحالي')}S.timer={bid:b.id,left:len(b)*60,run:false}}
 S.timer.run=true;S.timer.end=Date.now()+S.timer.left*1000;S.view='session';render()};
 A.pause=()=>{const t=T();t.left=Math.max(0,Math.ceil((t.end-Date.now())/1000));t.run=false;render()};
@@ -587,16 +607,22 @@ A.reset=()=>{const t=T(),b=cur();if(!t)return;t.left=(t.x?t.len:len(b))*60;t.run
 A.ext=()=>{const t=T(),b=cur();if(!t||!(t.x||b.type!='study'))return toast('التمديد متاح للاستراحة فقط');t.left+=300;if(t.run)t.end+=3e5;if(t.x)t.len+=5;render()};
 A.brk=()=>modal('كم دقيقة استراحة؟','<div class="grid">'+[5,10,15,20].map(m=>`<button class="chip" data-a="xb:${m}">${m} دقيقة</button>`).join('')+'</div><p class="mut">تُوقَف الجلسة مؤقتاً ويمكنك المتابعة بعدها.</p>');
 A.xb=m=>{A.mx();const t=S.timer;if(t&&t.run)A.pause();S.xb={x:1,len:+m,left:m*60,run:true,end:Date.now()+m*6e4};S.view='session';render()};
+/* "not done yet": extend the study block on the schedule and keep extending until the user says they are done */
+const grow=(t,b)=>{b.e=Math.max(b.e+5,now()+Math.ceil(Math.max(t.left,0)/60))};
+function autoExt(t){const b=cur();if(S.xb||!t.auto||!b||b.type!='study'||t.bid!=b.id)return false;let n=0;while(t.end<=Date.now()&&n<500){t.end+=3e5;n++}t.left=Math.max(1,Math.ceil((t.end-Date.now())/1000));b.e+=5*n;b.e=Math.max(b.e,now()+Math.ceil(t.left/60));replan(now(),0,1);toast('زِيد وقت الجلسة 5 دقائق تلقائياً');render();return true}
+A.more=()=>{A.mx();const t=S.timer,b=cur();if(S.xb||!t||!b||b.type!='study'||t.bid!=b.id)return toast('ابدأ الجلسة أولاً');
+if(t.left<=0&&!t.run){t.left=300;t.run=true;t.end=Date.now()+3e5}else{t.left+=300;if(t.run)t.end+=3e5}
+t.auto=1;grow(t,b);replan(now(),0,1);toast('تم تمديد الجلسة 5 دقائق. تستمر حتى تضغط «أنهيت الجلسة».');render()};
 A.endBrk=()=>{if(S.xb)S.xb=null;else{const b=cur();if(b&&b.type!='study')b.st='done';S.timer=null}render()};
-setInterval(()=>{const t=T();$('#clk').textContent=fmt(now());if(!t||!t.run)return;const l=Math.ceil((t.end-Date.now())/1000);
-if(l<=0){t.left=0;t.run=false;lnEnd();try{navigator.vibrate([300,150,300])}catch(e){}render();const st=!S.xb&&cur()&&cur().type=='study';modal('انتهى الوقت ✦',st?'<p>أحسنت! يمكنك الآن تسجيل ما أنجزته في الجلسة.</p>':'<p>انتهت الاستراحة. الخطوة التالية جاهزة.</p>',st?'تسجيل الجلسة':'تمام',()=>{st?A.fin():A.endBrk()})}
+setInterval(()=>{if(dayRoll())render();const t=T();$('#clk').textContent=fmt(now());if(!t||!t.run)return;const l=Math.ceil((t.end-Date.now())/1000);
+if(l<=0){if(autoExt(t))return;t.left=0;t.run=false;lnEnd();try{navigator.vibrate([300,150,300])}catch(e){}render();const st=!S.xb&&cur()&&cur().type=='study';modal('انتهى الوقت ✦',st?'<p>أحسنت! يمكنك الآن تسجيل ما أنجزته في الجلسة.</p><button class="btn g" data-a="more">لم أنتهِ بعد: زد الوقت وتابع</button>':'<p>انتهت الاستراحة. الخطوة التالية جاهزة.</p>',st?'تسجيل الجلسة':'تمام',()=>{st?A.fin():A.endBrk()})}
 else{t.left=l;const e=$('#tm');if(e)e.textContent=mmss(l)}},500);
 function guard(fn){const t=S.timer,b=cur();if(t&&b&&b.type=='study'&&t.bid==b.id&&b.s!=null&&len(b)*60-t.left>=60){after=fn;A.fin()}else fn()}
 A.fin=()=>{if(S.xb)return A.endBrk();const b=cur();if(!b)return;if(b.type!='study')return A.endBrk();
 const r=rec(b.rid),t=S.timer,pl=len(b),el=t&&t.bid==b.id?(t.left==0?pl:Math.max(0,Math.round((pl*60-t.left)/60))):0;
-modal('انتهت الجلسة',`<label>كم دقيقة استمعت فعلياً؟</label><input type="number" id="f_m" min="0" value="${el}"><label>هل فهمت الجزء؟</label><select id="f_u"><option value="yes">نعم، فهمت</option><option value="part">فهمت جزءاً</option><option value="no">أحتاج إلى مراجعة جزء</option></select><label style="display:flex;align-items:center;margin:10px 0"><input type="checkbox" id="f_c" ${r.dur&&r.done+el>=r.dur?'checked':''}>أنهيت التسجيل كاملاً</label>`,'حفظ',()=>{
+modal('انتهت الجلسة',`<label>كم دقيقة استمعت فعلياً؟</label><input type="number" id="f_m" min="0" value="${el}"><label>هل فهمت الجزء؟</label><select id="f_u"><option value="yes">نعم، فهمت</option><option value="part">فهمت جزءاً</option><option value="no">أحتاج إلى مراجعة جزء</option></select><label style="display:flex;align-items:center;margin:10px 0"><input type="checkbox" id="f_c" ${r.dur&&r.done+el>=r.dur?'checked':''}>أنهيت هذه المهمة كاملة ✦ (تحصل على نجمة عند إتمام كل مهام المادة)</label>`,'حفظ',()=>{
 const m=Math.max(0,+v('f_m')||0),u=v('f_u');r.done+=m;if($('#f_c').checked){r.status='done';r.dur=Math.max(r.dur||0,r.done);r.est=0}else if(r.status!='done')r.status=r.done>0?'doing':r.status;r.rev=u=='no'?1:u=='yes'?0:r.rev;
-if(m>0)S.log.push({d:iso(),rid:r.id,sid:r.sid,m,u});b.st=m>0?'done':'skip';b.act=m;S.timer=null;const f=after;after=null;if(f)f();else toast('تم حفظ تقدّمك. أحسنت!');render()})};
+if(m>0)S.log.push({d:iso(),rid:r.id,sid:r.sid,m,u});b.st=m>0?'done':'skip';b.act=m;S.timer=null;if(r.status=='done'&&S.day)replan(now(),0,0,1);const f=after;after=null;if(f)f();else toast('تم حفظ تقدّمك. أحسنت!');render()})};
 /* reschedule */
 A.clock=()=>modal('كم الساعة الآن؟','<p class="mut">إذا كانت ساعة الجهاز غير مضبوطة، عدّل الوقت هنا.</p>'+inp('c_t',now()),'تثبيت',()=>{const m=parse(v('c_t'));if(m==null)return false;setNow(m);render()});
 A.late=()=>modal('نرتّب من جديد؟','<p>لا تُحسب الجلسات الفائتة منجزة، ويُحتفظ بإنجازك الفعلي فقط. كم الساعة الآن؟</p>'+inp('c_t',now()),'ترتيب الباقي',()=>{const m=parse(v('c_t'));if(m==null)return false;setNow(m);guard(()=>{replan(now());toast('تمام، جدول جديد من '+fmt(now())+'');render()})});
@@ -605,10 +631,11 @@ A.tr=k=>{A.mx();if(k=='b')return A.xb(10);if(k=='e')return A.endDay();guard(()=>
 A.sw=()=>{if(!S.day)return;modal('أي مادة؟','<div>'+S.day.sids.map(id=>`<button class="chip" data-a="swTo:${id}">${esc(sub(id).name)}</button>`).join('')+'</div><p class="mut">تقدّم المادة الحالية يبقى محفوظاً.</p>')};
 A.swTo=id=>{A.mx();guard(()=>{S.day.pin=id;replan(now());toast('تم تغيير المادة');render()})};
 A.endDay=()=>modal('إنهاء اليوم؟','<p>ما لم يكتمل يُؤجَّل ليوم آخر، وكل ما أنجزته محفوظ.</p>','إنهاء اليوم',()=>{A.mx();guard(()=>{const D=S.day;D.blocks=D.blocks.filter(b=>b.st!='todo');D.ended=true;S.timer=S.xb=null;S.view='stats';render()})});
+A.overtime=()=>{const D=S.day;if(!D)return;D.endX=1439;D.ended=false;D.extra=(D.extra||0)+2;replan(now());if(!cur())toast('لا يتسع وقت اليوم لجلسة أخرى. عدّل «آخر وقت للدراسة» في الإعدادات أو جرّب غداً.');render()};
 /* plan */
 V.plan=()=>{const D=S.day;if(!D)return card('<p>لا يوجد جدول لليوم بعد.</p><button class="btn" data-a="go:setup">ترتيب يومي</button>');
 const all=D.blocks.concat(D.fixed.map(f=>({type:'fixed',s:f.s,e:f.e,l:f.l,st:'x'}))).sort((a,b)=>a.s-b.s);
-return `<h2>جدول اليوم</h2>`+lateBn()+(all.length?all.map(b=>`<div class="r2 ${b.type} ${b.st}" ${b.type=='study'&&b.st=='todo'?'data-a="go:session"':''}><b>${fmt(b.s)}–${fmt(b.e)}</b><span>${lab(b)}</span><i>${b.st=='done'?'✓':b.st=='skip'?'—':''}</i></div>`).join(''):card(queue(D.sids).length?'<p>الوقت متأخر قليلاً. الأفضل الراحة ونتابع غداً 🌙</p>':'<p>لا توجد جلسات لليوم بعد. يمكنك اختيار مادة وبدئها من صفحة المواد.</p><button class="btn" data-a="go:subs">المواد</button>'))
+return `<h2>جدول اليوم</h2>`+lateBn()+(all.length?all.map(b=>`<div class="r2 ${b.type} ${b.st}" ${b.type=='study'&&b.st=='todo'?'data-a="go:session"':''}><b>${fmt(b.s)}–${fmt(b.e)}</b><span>${lab(b)}</span><i>${b.st=='done'?'✓':b.st=='skip'?'—':''}</i></div>`).join(''):card(queue(D.sids).length?'<p>الوقت متأخر قليلاً. الأفضل الراحة ونتابع غداً 🌙</p><button class="btn" data-a="overtime">ادرس الآن رغم تأخر الوقت</button>':'<p>لا توجد جلسات لليوم بعد. يمكنك اختيار مادة وبدئها من صفحة المواد.</p><button class="btn" data-a="go:subs">المواد</button>'))
 +(D.left.length?`<p class="mut">رُحِّل ${D.left.length} مهمة/مهام إلى الأيام القادمة لعدم كفاية وقت اليوم.</p>`:'')+`<button class="btn g" data-a="late">إعادة ترتيب من الوقت الحالي</button><button class="btn g" data-a="addS">+ إضافة مادة</button><button class="btn g" data-a="go:setup">إعداد يوم جديد</button>`};
 /* setup wizard */
 const initW=()=>{W={st:0,t:now(),ts:0,dow:new Date().getDay(),uni:0,us:540,ue:900,fx:[],sids:[],en:'mid',dr:{}}};
@@ -631,17 +658,18 @@ A.addF=()=>{const s=parse(v('w_fs')),e=parse(v('w_fe'));if(s==null||e==null||e<=
 A.nx=()=>{col();W.st++;render()};A.sk=()=>{W.st++;render()};A.bk=()=>{W.st--;render()};
 A.mk=()=>{col();if(!W.sids.length)W.sids=LS().map(x=>x.id);W.sids.forEach(x=>gen(x));S.recs.forEach(r=>r.later=0);
 if(W.ts)setNow(W.t);const fx=W.fx.slice();if(W.uni)fx.push({l:'جامعة',s:W.us,e:W.ue});fx.sort((a,b)=>a.s-b.s);
-S.day={date:today(),dow:W.dow,sids:W.sids,en:W.en,fixed:fx,blocks:[],left:[]};S.timer=S.xb=null;replan(now());S.view='plan';render()};
+S.day={date:today(),dow:W.dow,sids:W.sids,en:W.en,fixed:fx,blocks:[],left:[]};S.timer=S.xb=null;stretch();replan(now());S.view='plan';render()};
 /* subjects */
 const sf=s=>`<input id="s_n" placeholder="اسم المادة" value="${esc(s.name||'')}"><label>موعد الامتحان (اختياري)</label><input type="date" id="s_e" value="${s.exam||''}"><label>الأولوية</label><select id="s_p">${[1,2,3].map(i=>`<option value="${i}" ${(s.prio||2)==i?'selected':''}>${PR[i]}</option>`).join('')}</select>${nt()}${s.id?`<button class="btn g" data-a="delS:${s.id}">حذف المادة</button>`:''}`;
-const getS=s=>{const n=v('s_n').trim();if(!n)return false;Object.assign(s,{name:n,exam:v('s_e'),prio:+v('s_p')})};
+const getS=s=>{const n=v('s_n').trim();if(!n){toast('أدخل اسم المادة');return false}Object.assign(s,{name:n,exam:v('s_e'),prio:+v('s_p')})};
 const when=e=>S.day?`<label>متى؟</label><select id="w_when">${e?'<option value="">بدون تغيير</option>':''}<option value="t">اليوم</option><option value="l">لاحقاً</option></select>`:'',gw=()=>{const g=document.getElementById('w_when');return g?g.value:''};
 const nt=()=>`<details><summary>+ إضافة مهمة (اختياري)</summary><div class="bub"><b>ما هي «المهمة»؟</b><br>جزء محدد تريد دراسته من المادة، مثل «الفصل 3» أو «تمارين المجموعة 2» أو «مراجعة المحاضرة 5». تحدّد لها مدة تقديرية اختيارية ويوزّع التطبيق جلسات التركيز عليها. لا حاجة لإضافة مهام: إن تركتها فارغة تُنشأ جلسات «دراسة عامة» للمادة.</div><label>مهمة (اختياري)</label><input id="t_t" placeholder="عنوان المهمة"><input type="number" id="t_d" min="1" placeholder="المدة التقديرية بالدقائق"><label>طريقة الدراسة (اختياري)</label><select id="t_m">${MT.map(m=>`<option value="${m[0]}">${m[1]}</option>`).join('')}</select>${when()}</details>`;
 function newTask(sid){const t=v('t_t').trim();if(!t)return null;const r={id:uid(),sid,num:nextNum(sid),title:t,dur:+v('t_d')||null,done:0,status:'todo',method:v('t_m'),prio:0};S.recs.push(r);return r}
-function gen(sid){if(S.recs.some(r=>r.sid==sid&&r.status!='done'))return;S.recs.push({id:uid(),sid,num:nextNum(sid),title:'دراسة عامة',dur:null,done:0,status:'todo',method:'',prio:0})}
-function place(sid,w,r){const D=S.day;if(!D||!w)return;if(w=='l'){if(r)r.later=1;return}if(!D.sids.includes(sid))D.sids.push(sid);if(r)r.later=0;gen(sid);D.ended=false;D.extra=(D.extra||0)+2;replan(now(),0,1)}
+function gen(sid){if(S.recs.some(r=>r.sid==sid&&r.status!='done'))return;S.recs.push({id:uid(),sid,num:nextNum(sid),title:'دراسة عامة',dur:null,done:0,status:'todo',method:'',prio:0,auto:1})}
+const isAuto=r=>r.status!='done'&&!r.done&&!r.dur&&(r.auto||r.title=='دراسة عامة')&&!r.method;
+function place(sid,w,r){const D=S.day;if(!D||!w)return;if(w=='l'){if(r)r.later=1;return}if(!D.sids.includes(sid))D.sids.push(sid);if(r)r.later=0;gen(sid);D.ended=false;D.extra=(D.extra||0)+2;stretch();replan(now(),0,1)}
 const nextNum=sid=>Math.max(0,...S.recs.filter(r=>r.sid==sid).map(r=>r.num||0))+1;
-A.addS=w=>modal('مادة جديدة',sf({}),'حفظ',()=>{const s={id:uid()};if(getS(s)===false)return false;S.subs.push(s);if(w=='w'&&W)W.sids.push(s.id);const r=newTask(s.id);place(s.id,gw(),r);render()});
+A.addS=w=>modal('مادة جديدة',sf({}),'حفظ',()=>{const s={id:uid()};if(getS(s)===false)return false;S.subs.push(s);if(w=='w'&&W)W.sids.push(s.id);try{const r=newTask(s.id);place(s.id,gw(),r)}catch(e){console.error(e)}render();toast('تمت إضافة المادة ✓')});
 A.editS=id=>{const s=sub(id);modal('تعديل المادة',sf(s),'حفظ',()=>{if(getS(s)===false)return false;const r=newTask(id);if(r)place(id,gw(),r);render()})};
 A.delS=id=>modal('إزالة المادة؟','<p>ستُزال المادة من قائمتك وخطتك، وتبقى إنجازاتك وسجل دراستك محفوظين في الإحصائيات.</p>','إزالة',()=>{{const c=cur(),cr=c&&rec(c.rid);if(cr&&cr.sid==id)S.timer=null}const used=S.log.some(l=>l.sid==id)||S.recs.some(r=>r.sid==id&&(r.status=='done'||r.done>0));if(used)sub(id).arch=1;else{S.subs=S.subs.filter(x=>x.id!=id);S.recs=S.recs.filter(r=>r.sid!=id)}if(S.day){S.day.sids=S.day.sids.filter(x=>x!=id);replan(now(),0,1)}render()});
 const MT=[['','غير محدد'],['read','قراءة'],['video','فيديو'],['audio','صوت'],['ex','تمارين'],['rev','مراجعة'],['live','محاضرة مباشرة'],['other','أخرى']];
@@ -667,8 +695,8 @@ A.imp=()=>{try{const o=JSON.parse(v('ex'));if(!Array.isArray(o.subs))throw 0;S=O
 A.rst=()=>modal('مسح كل البيانات؟','<p>لا يمكن التراجع إلا بوجود نسخة مصدّرة.</p>','مسح',()=>{S={...DEF,set:{...DEF.set},subs:[],recs:[],log:[]};theme();render()});
 /* galaxy */
 function skyCheck(){const first=!S.sky;if(!S.sky||!Array.isArray(S.sky.stars))S.sky={stars:[]};
-for(const x of S.subs){const rs=S.recs.filter(r=>r.sid==x.id),all=rs.length>0&&rs.every(r=>r.status=='done');
-if(all&&!x.sd){x.sd=1;S.sky.stars.push({id:uid(),sid:x.id,n:x.name,t:Date.now()});if(!first)toast('نجمة جديدة في مجرّتك ✦')}else if(!all&&x.sd)x.sd=0}
+for(const x of S.subs){const rs=S.recs.filter(r=>r.sid==x.id),all=rs.some(r=>r.status=='done')&&rs.every(r=>r.status=='done'||isAuto(r));
+if(all&&!x.sd){x.sd=1;if(!S.sky.stars.some(t=>t.sid==x.id)){S.sky.stars.push({id:uid(),sid:x.id,n:x.name,t:Date.now()});if(!first)toast('نجمة جديدة في مجرّتك ✦')}}else if(!all&&x.sd)x.sd=0}
 const pc=Math.floor(S.log.reduce((a,l)=>a+l.m,0)/120);if(S.sky.pl===undefined)S.sky.pl=pc;else if(pc>S.sky.pl){S.sky.pl=pc;toast('كوكب جديد في مجرّتك ✦')}}
 const rnd=k=>{const x=Math.sin(k*127.1+311.7)*43758.5453;return x-Math.floor(x)},PC=['#6F9CCB','#F5C451','#A9B8D5','#F8F5ED','#8FB4DC'];
 const gal=()=>{const st=S.sky.stars,tot=S.log.reduce((a,l)=>a+l.m,0),pc=Math.floor(tot/120);return{st,tot,pc,n:st.length+pc}};
