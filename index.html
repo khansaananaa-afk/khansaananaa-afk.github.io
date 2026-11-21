@@ -12,6 +12,7 @@
 <title>Study Buddy — رفيق الدراسة</title>
 <title>Study Buddy — رفيق الدراسة</title>
 <title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -131,7 +132,8 @@ A.mx=()=>{$('#md').hidden=true;M=null;after=null};
 A.mok=()=>{const f=M;if(f&&f()===false)return;if(M===f)A.mx()};
 document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const[a,...p]=t.dataset.a.split(':');if(e.target.id=='md')return;A[a]&&A[a](...p)});
 document.addEventListener('change',e=>{const k=e.target.dataset.set;if(!k)return;const x=e.target.value;S.set[k]=k=='theme'||k=='lang'||k=='bg'?x:k=='end'?(parse(x)||1350):+x;theme();render()});
-const TRS=`انقطعت سلسلتك! ادرسي 120 دقيقة اليوم لاستعادتها — باقي ¦Your streak broke! Study 120 minutes today to restore it — 
+const TRS=`تجاوزنا قيود الجدول وبدأنا المادة فوراً بطلبك ✦¦We skipped the schedule limits and started it right away at your request ✦
+انقطعت سلسلتك! ادرسي 120 دقيقة اليوم لاستعادتها — باقي ¦Your streak broke! Study 120 minutes today to restore it — 
  د.¦ min left.
 تمت استعادة سلسلتك ✦ (¦Your streak was restored ✦ (
 )¦)
@@ -551,7 +553,7 @@ placeholder="اسم المادة"¦placeholder="Subject name"
  مهمة/مهام إلى الأيام القادمة لعدم كفاية وقت اليوم.¦ task(s) to upcoming days: not enough time today.`;const TR=TRS.split('\n').map(l=>l.split('¦')).sort((a,b)=>b[0].length-a[0].length);
 function tl(h){if(S.set.lang!='en')return h;for(const[a,e] of TR)h=h.split(a).join(e);return h.replace(/(\d)\s?د(?![\u0600-\u06FF])/g,'$1 min')}
 const NAV0=$('nav').innerHTML;
-function theme(){const r=document.documentElement,en=S.set.lang=='en';S.set.theme?r.setAttribute('data-theme',S.set.theme):r.removeAttribute('data-theme')+`<p class="mut" style="text-align:center">الإصدار: 17 ✦ مجرّتي</p>`;r.lang=en?'en':'ar';r.dir=en?'ltr':'rtl';$('nav').innerHTML=tl(NAV0);{const m=document.querySelector('meta[name=theme-color]'),dk=S.set.theme=='dark'||(!S.set.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=dk?'#17264B':'#F8F5ED'}document.title=en?'Study Buddy':'Study Buddy — رفيق الدراسة'}
+function theme(){const r=document.documentElement,en=S.set.lang=='en';S.set.theme?r.setAttribute('data-theme',S.set.theme):r.removeAttribute('data-theme')+`<p class="mut" style="text-align:center">الإصدار: 18 ✦ مجرّتي</p>`;r.lang=en?'en':'ar';r.dir=en?'ltr':'rtl';$('nav').innerHTML=tl(NAV0);{const m=document.querySelector('meta[name=theme-color]'),dk=S.set.theme=='dark'||(!S.set.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=dk?'#17264B':'#F8F5ED'}document.title=en?'Study Buddy':'Study Buddy — رفيق الدراسة'}
 const V={};
 function render(){skyCheck();stkCheck();save();ntSync();$('#app').innerHTML=tl((V[S.view]||V.home)());$('#clk').textContent=fmt(now());{const b=$('#stk');$('#stkn').textContent=streak();b.classList.toggle('on',dayMin(iso())>=30);$('#stkn').textContent=dispStreak();if(b.setAttribute)b.setAttribute('aria-label',tl('سلسلة الدراسة'));const q0=$('#qb0');if(q0&&q0.setAttribute)q0.setAttribute('aria-label',tl('القرآن الكريم'))}document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n.dataset.a=='go:'+S.view))}
 A.go=x=>{S.view=x;if(x=='setup')initW();render();scrollTo(0,0)};
@@ -578,7 +580,11 @@ A.newp=()=>{const n=v('p_n').trim();if(!n)return toast('أدخل اسم المس
 A.dlp=id=>modal('حذف المساحة؟','<p>ستُحذف كل بياناتها نهائياً.</p>','حذف',()=>{REG=REG.filter(p=>p.id!=id);saveReg();try{localStorage.removeItem(keyOf(id))}catch(e){}A.prof()});
 A.startS=id=>{gen(id);const rs=S.recs.filter(r=>r.sid==id&&r.status!='done');
 const c=cur(),cr=c&&rec(c.rid);if(S.timer&&cr&&cr.sid==id&&c.id==S.timer.bid){S.view='session';return render()}
-guard(()=>{rs.forEach(r=>r.later=0);if(!S.day)S.day={date:today(),dow:new Date().getDay(),sids:[],en:'mid',fixed:[],blocks:[],left:[]};const D=S.day;if(!D.sids.includes(id))D.sids.push(id);D.pin=id;D.ended=false;if(D.blocks.some(b=>b.st=='done'))D.extra=(D.extra||0)+2;S.xb=null;replan(now());A.start()})};
+if(!rs.length)return;
+guard(()=>{rs.forEach(r=>r.later=0);if(!S.day)S.day={date:today(),dow:new Date().getDay(),sids:[],en:'mid',fixed:[],blocks:[],left:[]};const D=S.day;if(!D.sids.includes(id))D.sids.push(id);D.pin=id;D.ended=false;if(D.blocks.some(b=>b.st=='done'))D.extra=(D.extra||0)+2;S.xb=null;replan(now());
+let b=cur(),cr2=b&&rec(b.rid);
+if(!b||!cr2||cr2.sid!=id){const r=rs[0],t0=now();D.blocks=D.blocks.filter(x=>x.st!='todo').concat([{id:uid(),type:'study',s:t0,e:t0+(S.set.study||15),rid:r.id,st:'todo'}]).sort((a,b)=>a.s-b.s);D.left=D.left.filter(x=>x!=r.id);D.ended=false;toast('تجاوزنا قيود الجدول وبدأنا المادة فوراً بطلبك ✦')}
+A.start()})};
 /* session */
 V.session=()=>{const D=S.day,b=cur(),x=S.xb;if(!D||(!b&&!x))return card('<p>لا توجد جلسة الآن. افتح الرئيسية لترتيب يومك.</p><button class="btn" data-a="go:home">الرئيسية</button>');
 const t=T(),isS=!x&&b.type=='study',r=isS&&rec(b.rid),st=t&&(x||t.bid==b.id),sh=x?x.left:st?t.left:len(b)*60;
