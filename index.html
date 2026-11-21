@@ -13,6 +13,7 @@
 <title>Study Buddy — رفيق الدراسة</title>
 <title>Study Buddy — رفيق الدراسة</title>
 <title>Study Buddy — رفيق الدراسة</title>
+<title>Study Buddy — رفيق الدراسة</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -131,8 +132,12 @@ const A={};
 A.mx=()=>{$('#md').hidden=true;M=null;after=null};
 A.mok=()=>{const f=M;if(f&&f()===false)return;if(M===f)A.mx()};
 document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const[a,...p]=t.dataset.a.split(':');if(e.target.id=='md')return;A[a]&&A[a](...p)});
-document.addEventListener('change',e=>{const k=e.target.dataset.set;if(!k)return;const x=e.target.value;S.set[k]=k=='theme'||k=='lang'||k=='bg'?x:k=='end'?(parse(x)||1350):+x;theme();render()});
-const TRS=`تجاوزنا قيود الجدول وبدأنا المادة فوراً بطلبك ✦¦We skipped the schedule limits and started it right away at your request ✦
+document.addEventListener('change',e=>{if(e.target.id=='qauto_c'){S.set.qauto=e.target.checked?undefined:0;if(S.set.qauto===undefined)delete S.set.qauto;save();return}const k=e.target.dataset.set;if(!k)return;const x=e.target.value;S.set[k]=k=='theme'||k=='lang'||k=='bg'?x:k=='end'?(parse(x)||1350):+x;theme();render()});
+const TRS=`عرض اقتراح تنزيل القرآن كاملاً عند أول فتح للمشغّل¦Offer to download the full Quran the first time the player opens
+تنزيل القرآن كاملاً؟¦Download the whole Quran?
+لمرة واحدة فقط: تنزيل القرآن كاملاً (مئات الميغابايت، وقد يتجاوز جيجابايت حسب القارئ) للاستماع بدون إنترنت لاحقاً، بدون حاجة لتنزيل كل سورة يدوياً. يُفضّل أن تكوني على شبكة Wi‑Fi.¦One-time offer: download the whole Quran (hundreds of MB, possibly over 1 GB depending on the reciter) for offline listening later, without downloading each surah by hand. Wi‑Fi is recommended.
+نزّليه الآن¦Download it now
+تجاوزنا قيود الجدول وبدأنا المادة فوراً بطلبك ✦¦We skipped the schedule limits and started it right away at your request ✦
 انقطعت سلسلتك! ادرسي 120 دقيقة اليوم لاستعادتها — باقي ¦Your streak broke! Study 120 minutes today to restore it — 
  د.¦ min left.
 تمت استعادة سلسلتك ✦ (¦Your streak was restored ✦ (
@@ -553,7 +558,7 @@ placeholder="اسم المادة"¦placeholder="Subject name"
  مهمة/مهام إلى الأيام القادمة لعدم كفاية وقت اليوم.¦ task(s) to upcoming days: not enough time today.`;const TR=TRS.split('\n').map(l=>l.split('¦')).sort((a,b)=>b[0].length-a[0].length);
 function tl(h){if(S.set.lang!='en')return h;for(const[a,e] of TR)h=h.split(a).join(e);return h.replace(/(\d)\s?د(?![\u0600-\u06FF])/g,'$1 min')}
 const NAV0=$('nav').innerHTML;
-function theme(){const r=document.documentElement,en=S.set.lang=='en';S.set.theme?r.setAttribute('data-theme',S.set.theme):r.removeAttribute('data-theme')+`<p class="mut" style="text-align:center">الإصدار: 18 ✦ مجرّتي</p>`;r.lang=en?'en':'ar';r.dir=en?'ltr':'rtl';$('nav').innerHTML=tl(NAV0);{const m=document.querySelector('meta[name=theme-color]'),dk=S.set.theme=='dark'||(!S.set.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=dk?'#17264B':'#F8F5ED'}document.title=en?'Study Buddy':'Study Buddy — رفيق الدراسة'}
+function theme(){const r=document.documentElement,en=S.set.lang=='en';S.set.theme?r.setAttribute('data-theme',S.set.theme):r.removeAttribute('data-theme')+`<p class="mut" style="text-align:center">الإصدار: 19 ✦ مجرّتي</p>`;r.lang=en?'en':'ar';r.dir=en?'ltr':'rtl';$('nav').innerHTML=tl(NAV0);{const m=document.querySelector('meta[name=theme-color]'),dk=S.set.theme=='dark'||(!S.set.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=dk?'#17264B':'#F8F5ED'}document.title=en?'Study Buddy':'Study Buddy — رفيق الدراسة'}
 const V={};
 function render(){skyCheck();stkCheck();save();ntSync();$('#app').innerHTML=tl((V[S.view]||V.home)());$('#clk').textContent=fmt(now());{const b=$('#stk');$('#stkn').textContent=streak();b.classList.toggle('on',dayMin(iso())>=30);$('#stkn').textContent=dispStreak();if(b.setAttribute)b.setAttribute('aria-label',tl('سلسلة الدراسة'));const q0=$('#qb0');if(q0&&q0.setAttribute)q0.setAttribute('aria-label',tl('القرآن الكريم'))}document.querySelectorAll('nav button').forEach(n=>n.classList.toggle('on',n.dataset.a=='go:'+S.view))}
 A.go=x=>{S.view=x;if(x=='setup')initW();render();scrollTo(0,0)};
@@ -676,7 +681,7 @@ return `<h2>إنجازاتي</h2>`+card(`<div class="rw"><span>اليوم</span>
 +card('<b>حسب المادة</b>'+(S.subs.map(s=>`<div class="rw"><span>${esc(s.name)}${s.arch?' (مؤرشفة)':''}</span><span class="mut">${sum(S.log.filter(l=>l.sid==s.id))} د · ${pct(S.recs.filter(r=>r.sid==s.id))}%</span></div>`).join('')||'<p class="mut">لا توجد بيانات بعد.</p>'))+'<p class="mut">كل دقيقة تُحتسب، حتى لو لم ينتهِ كل شيء اليوم.</p>'};
 /* settings */
 const sel=(k,o,u)=>`<label>${o[0]}</label><select data-set="${k}">${o[1].map(x=>`<option value="${x[0]}" ${S.set[k]==x[0]?'selected':''}>${x[1]}</option>`).join('')}</select>`,rng=(a,u)=>a.map(x=>[x,x+' '+u]);
-V.set=()=>`<h2>الإعدادات</h2>`+card(`<b>المساحة الشخصية: ${esc((REG.find(p=>p.id==CP)||{}).name)}</b><p class="mut">لكل مساحة مواد ومهام وسجل وإعدادات خاصة بها. بياناتك محفوظة على هذا المتصفح فقط، ولا تظهر على أجهزة أو متصفحات أخرى، وهي غير محمية بكلمة سر.</p><button class="btn g" data-a="prof">تبديل أو إدارة المساحات</button>`)+notifCard()+card(sel('study',['مدة الدراسة',rng([10,15,20,25],'دقيقة')])+sel('brk',['الاستراحة القصيرة',rng([5,10],'دقائق')])+sel('long',['الاستراحة الطويلة',rng([15,20,30],'دقيقة')])+sel('every',['استراحة طويلة بعد',[[2,'جلستين'],[3,'3 جلسات'],[4,'4 جلسات']]])+sel('fmt',['نظام الوقت',[[24,'24 ساعة'],[12,'12 ساعة']]])+sel('theme',['المظهر',[['','تلقائي'],['light','فاتح'],['dark','داكن']]])+sel('lang',['اللغة',[['ar','العربية'],['en','English']]])+`<label>آخر وقت للدراسة</label><input type="time" data-set="end" value="${tv(S.set.end)}">`)
+V.set=()=>`<h2>الإعدادات</h2>`+card(`<b>المساحة الشخصية: ${esc((REG.find(p=>p.id==CP)||{}).name)}</b><p class="mut">لكل مساحة مواد ومهام وسجل وإعدادات خاصة بها. بياناتك محفوظة على هذا المتصفح فقط، ولا تظهر على أجهزة أو متصفحات أخرى، وهي غير محمية بكلمة سر.</p><button class="btn g" data-a="prof">تبديل أو إدارة المساحات</button>`)+qSetCard()+notifCard()+card(sel('study',['مدة الدراسة',rng([10,15,20,25],'دقيقة')])+sel('brk',['الاستراحة القصيرة',rng([5,10],'دقائق')])+sel('long',['الاستراحة الطويلة',rng([15,20,30],'دقيقة')])+sel('every',['استراحة طويلة بعد',[[2,'جلستين'],[3,'3 جلسات'],[4,'4 جلسات']]])+sel('fmt',['نظام الوقت',[[24,'24 ساعة'],[12,'12 ساعة']]])+sel('theme',['المظهر',[['','تلقائي'],['light','فاتح'],['dark','داكن']]])+sel('lang',['اللغة',[['ar','العربية'],['en','English']]])+`<label>آخر وقت للدراسة</label><input type="time" data-set="end" value="${tv(S.set.end)}">`)
 +card(`<b>حفظ البيانات</b><p class="mut">${saveOK?'تُحفظ البيانات تلقائياً على هذا المتصفح (وتُفقد إذا مُسحت بيانات المتصفح). صدّر نسخة احتياطية من وقت لآخر.':'⚠️ التخزين المحلي غير متاح هنا، فلن تُحفظ البيانات. استخدم التصدير لنسخ بياناتك.'}</p><textarea id="ex" placeholder="الصق نسخة محفوظة هنا للاستيراد"></textarea><button class="btn s" data-a="exp">تصدير</button><button class="btn s g" data-a="imp">استيراد</button><button class="btn s g" data-a="rst">مسح كل البيانات</button>`)
 +card('<b>عن المؤقت</b><p class="mut">يعتمد المؤقت على ساعة الجهاز فيبقى دقيقاً حتى لو غادرت الصفحة، لكن لا يوجد صوت أو إشعار والصفحة مغلقة؛ يظهر التنبيه عند فتحها.</p>');
 A.exp=()=>{const o={...S,timer:null,xb:null};$('#ex').value=JSON.stringify(o);try{$('#ex').select();navigator.clipboard.writeText($('#ex').value)}catch(e){}toast('تم التصدير. انسخ النص واحفظه.')};
@@ -775,7 +780,9 @@ const SUR='الفاتحة,البقرة,آل عمران,النساء,المائد
 const RC=[['ar.alafasy','مشاري العفاسي',128],['ar.husary','محمود خليل الحصري',128],['ar.minshawi','محمد صديق المنشاوي',128],['ar.sudais','عبد الرحمن السديس',192],['ar.shuraim','سعود الشريم',128],['ar.abdulbasit','عبد الباسط عبد الصمد',192],['ar.hudhaify','علي الحذيفي',128],['ar.ajamy','أحمد العجمي',128],['ar.muhammadayoub','محمد أيوب',128]];
 let QA=null,QR=null,QM=null,QS='',QH=false,QU=null,QAll=null;const QD=new Map(),QP=new Set();
 const qst=()=>S.qr||(S.qr={i:0,rep:'all',rc:'ar.alafasy'}),rcOf=id=>RC.find(x=>x[0]==id)||RC[0],qkey=(n,rc)=>rc+':'+n;
-const qurl=(n,rc)=>{const r=rcOf(rc);return`https://cdn.islamic.network/quran/audio-surah/${r[2]}/${r[0]}/${n}.mp3`};
+const qurl=(n,rc)=>`https://cdn.islamic.app/quran/audio-surah/${rc}/${n}.mp3`;
+const qurls=(n,rc)=>{const r=rcOf(rc);return[qurl(n,rc),`https://cdn.islamic.network/quran/audio-surah/${r[2]}/${r[0]}/${n}.mp3`,`https://api.islamic.app/v1/audio/surah/${rc}/${n}`]};
+const qfetch=async u=>{const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),15000);try{return await fetch(u,{mode:'cors',signal:ac.signal})}finally{clearTimeout(tm)}};
 const qnorm=t=>String(t).replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[\u064B-\u0652]/g,'');
 const ic=d=>`<svg viewBox="0 0 24 24" width="26" height="26"><path d="${d}" fill="currentColor"/></svg>`,QI={p:ic('M8 5v14l11-7z'),z:ic('M6 5h4v14H6zM14 5h4v14h-4z'),n:ic('M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z'),b:ic('M6 6h2v12H6zM9.5 12l8.5 6V6z')};
 const qplay=()=>!!QA&&!QA.paused&&!QA.ended,fT=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')},offl=()=>navigator.onLine===false;
@@ -788,7 +795,7 @@ function qLoad(){try{QDB.list().then(a=>{QD.clear();a.forEach(([k,z])=>QD.set(k,
 const qstat=()=>{let z=0;QD.forEach(v=>z+=v);return`المحمّل: ${QD.size} سورة · ${Math.round(z/1048576)} ميغابايت`};
 async function qDl(n,rc){const k=qkey(n,rc);if(QD.has(k))return true;if(QP.has(k))return false;QP.add(k);qlr();let ok=false;
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
-for(const u of[qurl(n,rc),`https://api.islamic.app/v1/audio/surah/${rc}/${n}`]){try{const r=await fetch(u,{mode:'cors'});if(!r.ok)continue;const b=await r.blob();if(!b||b.size<30000)continue;await QDB.put(k,b);QD.set(k,b.size);ok=true;break}catch(e){}}
+for(const u of qurls(n,rc)){try{const r=await qfetch(u);if(!r.ok)continue;const b=await r.blob();if(!b||b.size<30000)continue;await QDB.put(k,b);QD.set(k,b.size);ok=true;break}catch(e){}}
 QP.delete(k);qlr();return ok}
 async function qSrc(n){const q=qst();try{const b=await QDB.get(qkey(n,q.rc));if(b){if(QU&&URL.revokeObjectURL)URL.revokeObjectURL(QU);QU=URL.createObjectURL(b);return QU}}catch(e){}return qurl(n,q.rc)}
 const qStep=(i,d)=>{const q=qst();if(!i)return 1;for(let k=1;k<=114;k++){const j=((i-1+d*k)%114+114)%114+1;if(!offl()||QD.has(qkey(j,q.rc)))return j}return 0};
@@ -811,7 +818,7 @@ if(QM){QM.hidden=!q.i||!!QR||QH;if(q.i)QM.innerHTML=tl(`<span class="qmt" data-a
 try{document.body.classList.toggle('qm',!!q.i&&!QR&&!QH);const b=document.getElementById('qb0');if(b)b.classList.toggle('on',pl)}catch(e){}
 if(QR){const g=id=>QR.querySelector('#'+id),pp=g('qpp'),nw=g('qnow'),rp=g('qrep');if(pp)pp.innerHTML=pl?QI.z:QI.p;if(nw)nw.textContent=tl(q.i?'سورة '+SUR[q.i-1]:'اختيار سورة للتشغيل');if(rp)rp.textContent=tl({all:'تشغيل متتابع',one:'تكرار السورة',off:'إيقاف بعد السورة'}[q.rep]);qlr()}}
 function qprog(){if(!QR||!QA)return;const g=id=>QR.querySelector('#'+id),s=g('qp'),d=QA.duration||0;if(!s)return;if(d&&!isFinite(d))return;if(d)s.value=Math.round(QA.currentTime/d*1000);g('qt1').textContent=fT(QA.currentTime);g('qt2').textContent=fT(d)}
-A.q=()=>{if(QR)return;const q=qst();QR=document.createElement('div');QR.id='qr';
+A.q=()=>{if(QR)return;qAuto();const q=qst();QR=document.createElement('div');QR.id='qr';
 QR.innerHTML=tl(`<div class="cht"><button class="sfb" data-a="qx" aria-label="إغلاق">✕</button><b class="qtt">القرآن الكريم</b></div><div class="card"><div class="qnow" id="qnow">${q.i?'سورة '+SUR[q.i-1]:'اختيار سورة للتشغيل'}</div><div dir="ltr" class="qpr"><span id="qt1" class="mut">0:00</span><input type="range" id="qp" min="0" max="1000" value="0"><span id="qt2" class="mut">0:00</span></div><div dir="ltr" class="qc"><button class="qb" data-a="qn:-1" aria-label="السابق">${QI.b}</button><button class="qb big" id="qpp" data-a="qt" aria-label="تشغيل / إيقاف">${qplay()?QI.z:QI.p}</button><button class="qb" data-a="qn:1" aria-label="التالي">${QI.n}</button></div><div style="text-align:center"><button class="chip" data-a="qrep" id="qrep">${{all:'تشغيل متتابع',one:'تكرار السورة',off:'إيقاف بعد السورة'}[q.rep]}</button></div><label>القارئ</label><select id="qrs">${RC.map(r=>`<option value="${r[0]}" ${r[0]==q.rc?'selected':''}>${r[1]}</option>`).join('')}</select><div class="mut">حمّل السور بزر ↓ لتسمعها بدون إنترنت.</div><div class="rw"><button class="chip" data-a="qda" id="qda">تنزيل الكل للاستماع بدون إنترنت</button><button class="chip" data-a="qdel">حذف التنزيلات</button></div><div class="mut" id="qst">${qstat()}</div></div><input id="qs" placeholder="بحث عن سورة" value="${esc(QS)}"><div id="ql">${qlist()}</div>`);
 document.body.appendChild(QR);try{history.pushState({q:1},'')}catch(e){}qui();qprog();try{const o=QR.querySelector('.qi.on');if(o&&o.scrollIntoView)o.scrollIntoView({block:'center'})}catch(e){}};
 function qClose(){if(QR&&QR.remove)QR.remove();QR=null;qui()}
@@ -828,6 +835,8 @@ modal('تنزيل كل السور؟','<p>تنزيل كل السور قد يحت�
 A.qdel=()=>modal('حذف كل التنزيلات؟','<p>ستُحذف السور المحمّلة من هذا الجهاز.</p>','حذف',async()=>{for(const k of[...QD.keys()]){try{await QDB.del(k)}catch(e){}}QD.clear();qlr()});
 document.addEventListener('input',e=>{const t=e.target;if(t.id=='qs'){QS=t.value;qlr()}else if(t.id=='qp'&&QA&&QA.duration&&isFinite(QA.duration))QA.currentTime=QA.duration*t.value/1000});
 document.addEventListener('change',e=>{if(e.target.id=='qrs'){const q=qst();q.rc=e.target.value;save();if(q.i&&qplay())qPlay(q.i);qlr()}});
+function qAuto(){if(S.set.qauto===0||S.set.qdone||offl())return;S.set.qauto=0;save();
+modal('تنزيل القرآن كاملاً؟','<p>لمرة واحدة فقط: تنزيل القرآن كاملاً (مئات الميغابايت، وقد يتجاوز جيجابايت حسب القارئ) للاستماع بدون إنترنت لاحقاً، بدون حاجة لتنزيل كل سورة يدوياً. يُفضّل أن تكوني على شبكة Wi‑Fi.</p>','نزّليه الآن',()=>{S.set.qdone=1;save();A.qda()});}
 qLoad();
 /* break activities */
 const BGL=[['breath','تنفّس بالنجمة'],['swirl','رسم الدوّامة'],['bub','فقاعات هادئة'],['con','ربط النجوم'],['str','تمدد وحركة']];
@@ -876,6 +885,7 @@ ntPub({title:'Study Buddy ✦',message:tl(key[0]=='s'?'انتهت جلسة ال�
 function lnEnd(){try{if(!S.set.nl||ntOn()||typeof Notification=='undefined'||Notification.permission!='granted'||document.visibilityState=='visible')return;
 const study=!S.xb&&cur()&&cur().type=='study',title='Study Buddy ✦',body=tl(study?'انتهت جلسة الدراسة. حان وقت تسجيل ما أنجزته والاستراحة.':'انتهت الاستراحة. حان وقت العودة.'),o={body,icon:'icon-192.png',vibrate:[200,100,200],tag:'sb-timer',renotify:true};
 navigator.serviceWorker.getRegistration().then(r=>r?r.showNotification(title,o):new Notification(title,o)).catch(()=>{})}catch(e){}}
+const qSetCard=()=>card(`<b>القرآن الكريم</b><label style="display:flex;align-items:center;margin:8px 0"><input type="checkbox" id="qauto_c" ${S.set.qauto===0?'':'checked'}>عرض اقتراح تنزيل القرآن كاملاً عند أول فتح للمشغّل</label>`);
 const notifCard=()=>{const gr=typeof Notification!='undefined'&&Notification.permission=='granted',ln=!!S.set.nl&&gr;return card(`<b>إشعارات الجوال</b><p class="mut">للتنبيه عند نهاية الجلسة ونهاية الاستراحة.</p><button class="chip${ln?' on':''}" data-a="ntl">إشعار المتصفح: ${ln?'مفعّل':'معطّل'}</button><p class="mut">يعمل غالباً ما دام التطبيق مفتوحاً أو في الخلفية، لكن أندرويد قد يوقفه عند إغلاق التطبيق.</p><button class="chip${ntOn()?' on':''}" data-a="ntn">إشعار خارج التطبيق (ntfy): ${ntOn()?'مفعّل':'معطّل'}</button>${ntOn()?`<div class="mut">1) ثبّت تطبيق ntfy (من Google Play أو F-Droid).<br>2) اشترك في القناة التالية:</div><div class="tpc" dir="ltr">${esc(S.set.ntt)}</div><div class="rw"><button class="btn s g" data-a="ntc">نسخ</button><a class="btn s g" href="ntfy://ntfy.sh/${esc(S.set.ntt)}">فتح في ntfy</a><button class="btn s" data-a="ntt">اختبار الإشعار</button></div><p class="mut">اسم القناة سرّي، والرسائل نص عام بدون بياناتك. تُرسَل عبر خدمة ntfy.sh (طرف ثالث).</p>`:''}`)};
 A.ntl=()=>{if(S.set.nl){S.set.nl=0;save();return render()}if(typeof Notification=='undefined')return toast('هذا المتصفح لا يدعم الإشعارات');Notification.requestPermission().then(p=>{S.set.nl=p=='granted'?1:0;if(p!='granted')toast('لم يُسمح بالإشعارات');save();render()})};
 A.ntn=()=>{if(S.set.nt){S.set.nt=0;ntSync()}else{if(!S.set.ntt){const r=new Uint8Array(12);crypto.getRandomValues(r);S.set.ntt='sbd-'+[...r].map(x=>x.toString(36).padStart(2,'0')).join('')}S.set.nt=1}save();render()};
